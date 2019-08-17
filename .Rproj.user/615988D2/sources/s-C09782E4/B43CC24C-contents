@@ -1,0 +1,45 @@
+---
+title: "R Notebook - clusters tcc"
+author: "Patricia Felipe e Leandro"
+date: "11 de junho de 2019"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+if(!require(tidyverse)){install.packages("tidyverse")}
+if(!require(cluster)){install.packages("cluster")}
+if(!require(NbClust)){install.packages("NbClust")}
+if(!require(pvclust)){install.packages('pvclust')}
+if(!require(ggplot2)){install.packages('ggplot2')}
+#if(!require(gridExtra)){install.packages('gridExtra')}
+if(!require(plotly)){install.packages('plotly')}
+
+```
+
+```{r Funções utilizadas no Gráfico de Cotovelo, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+# within sum of squares
+wss <- function(d) {
+  sum(scale(d, scale = FALSE)^2)
+}
+
+# wrap the data
+wrap <- function(i, hc, x) {
+  cl <- cutree(hc, i)
+  spl <- split(x, cl)
+  wss <- sum(sapply(spl, wss))
+  wss
+}
+
+elbow_plot<- function(data, dissim,met){
+  cl = hclust(dissim, method = met)  
+  res <- sapply(seq.int(1, nrow(data)), 
+                wrap, h =cl, 
+                x = data)
+  return(res)
+}
+```

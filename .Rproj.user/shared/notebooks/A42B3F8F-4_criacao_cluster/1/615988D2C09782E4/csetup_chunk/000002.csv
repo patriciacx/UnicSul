@@ -1,0 +1,38 @@
+"0","knitr::opts_chunk$set(echo = FALSE)"
+"0","if(!require(tidyverse)){install.packages(""tidyverse"")}"
+"0","if(!require(cluster)){install.packages(""cluster"")}"
+"2","Carregando pacotes exigidos: cluster
+"
+"2","package ‘cluster’ was built under R version 3.5.2"
+"0","if(!require(NbClust)){install.packages(""NbClust"")}"
+"2","Carregando pacotes exigidos: NbClust
+"
+"2","package ‘NbClust’ was built under R version 3.5.2"
+"0","if(!require(pvclust)){install.packages('pvclust')}"
+"2","Carregando pacotes exigidos: pvclust
+"
+"2","package ‘pvclust’ was built under R version 3.5.2"
+"0","if(!require(ggplot2)){install.packages('ggplot2')}"
+"0","#if(!require(gridExtra)){install.packages('gridExtra')}"
+"0","if(!require(plotly)){install.packages('plotly')}"
+"2","Carregando pacotes exigidos: plotly
+"
+"2","
+Attaching package: ‘plotly’
+
+"
+"2","The following object is masked from ‘package:ggplot2’:
+
+    last_plot
+
+"
+"2","The following object is masked from ‘package:stats’:
+
+    filter
+
+"
+"2","The following object is masked from ‘package:graphics’:
+
+    layout
+
+"
