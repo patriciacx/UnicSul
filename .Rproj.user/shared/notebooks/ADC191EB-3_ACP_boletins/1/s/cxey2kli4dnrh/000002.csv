@@ -1,0 +1,1 @@
+"0","dados.scale <- scale(dados[,-c(1:2)]) %>% as.data.frame()"

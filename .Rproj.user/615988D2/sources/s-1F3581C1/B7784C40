@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1566053643523.000,
+    "dirty" : false,
+    "encoding" : "ISO8859-1",
+    "folds" : "",
+    "hash" : "1157077410",
+    "id" : "B7784C40",
+    "lastKnownWriteTime" : 1566054507,
+    "last_content_update" : 1566054507587,
+    "path" : "~/GitHub/UnicSul/3_ACP_boletins.Rmd",
+    "project_path" : "3_ACP_boletins.Rmd",
+    "properties" : {
+        "cursorPosition" : "72,0",
+        "scrollLine" : "70"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

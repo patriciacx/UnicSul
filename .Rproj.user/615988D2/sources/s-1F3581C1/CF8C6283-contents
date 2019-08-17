@@ -25,13 +25,13 @@ glimpse(dados.join)
 # SUBTRAINDO HOMICIDIOS
 
 
-dados.join[,'HOMICÍDIO DOLOSO (2)']
-dados.join[,'HOMICÍDIO DOLOSO POR ACIDENTE DE TRÂNSITO']
-dados.join$HomicidioDolosoExcetoTransito <- dados.join[,'HOMICÍDIO DOLOSO (2)'] - 
-  dados.join[,'HOMICÍDIO DOLOSO POR ACIDENTE DE TRÂNSITO']
+dados.join[,'HOMICÃDIO DOLOSO (2)']
+dados.join[,'HOMICÃDIO DOLOSO POR ACIDENTE DE TRÃ‚NSITO']
+dados.join$HomicidioDolosoExcetoTransito <- dados.join[,'HOMICÃDIO DOLOSO (2)'] - 
+  dados.join[,'HOMICÃDIO DOLOSO POR ACIDENTE DE TRÃ‚NSITO']
 
 
-dados.join[,'HOMICÍDIO DOLOSO (2)'] <- NULL
+dados.join[,'HOMICÃDIO DOLOSO (2)'] <- NULL
 
 ## RETIRANDO VARIAVEIS DE TOTAIS
 glimpse(dados.join)
@@ -41,7 +41,7 @@ dim(dados.join)
 head(dados.join[,22:24])
 dados.join[,22:24] <- NULL
 
-## RETIRANDO AS VARIÁVEIS DE NUMERO DE VÍTIMAS
+## RETIRANDO AS VARIÃVEIS DE NUMERO DE VÃTIMAS
 dim(dados.join)
 glimpse(dados.join)
 

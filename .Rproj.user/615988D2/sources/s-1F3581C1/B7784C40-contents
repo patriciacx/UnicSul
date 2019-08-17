@@ -34,7 +34,7 @@ bartlett.test(dados)
 bartlett.test(dados.scale)
 ```
 
-CorrelaÁıes 
+Correla√ß√µes 
 
 ```{r}
 #cor(dados.scale)
@@ -54,7 +54,7 @@ plot(fit1, type="lines")
 ```
 
 
-Seguindo a An·lise com 6 componentes:
+Seguindo a An√°lise com 6 componentes:
 
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 
@@ -69,34 +69,34 @@ fit2
 corrplot(t(fit2$loadings))
 ```
 
-RelaÁıes:
+Rela√ß√µes:
 
 RC1:
 <br>**X1** - Estupro 
-<br>**X2** - Estupro de Vulner·vel
-<br>**X6** - HOMICÕDIO CULPOSO POR ACIDENTE DE TR¬NSITO
+<br>**X2** - Estupro de Vulner√°vel
+<br>**X6** - HOMIC√çDIO CULPOSO POR ACIDENTE DE TR√ÇNSITO
 <br>**X8** - LATROCINIO
-<br>**X10** - LES√O CORPORAL CULPOSA POR ACIDENTE DE TR¬
-<br>**X11** - LES√O CORPORAL DOLOSA
+<br>**X10** - LES√ÉO CORPORAL CULPOSA POR ACIDENTE DE TR√Ç
+<br>**X11** - LES√ÉO CORPORAL DOLOSA
 <br>**x15** - ROUBO DE CARGA
-<br>**x16** - ROUBO DE VEÕCULO
+<br>**x16** - ROUBO DE VE√çCULO
 <br>**x17** - Homicidio doloso exceto transito
 
 
 RC2:
-<br>**X4** - FURTO DE VEÕCULO
-<br>**X9** - LES√O CORPORAL CULPOSA - OUTRAS
+<br>**X4** - FURTO DE VE√çCULO
+<br>**X9** - LES√ÉO CORPORAL CULPOSA - OUTRAS
 <br>**X18** - ROUBO A BANCO
 
 
 RC4:
-<br>**X5** - HOMICÕDIO CULPOSO OUTROS
-<br>**X12** - LES√O CORPORAL SEGUIDA DE MORTE
+<br>**X5** - HOMIC√çDIO CULPOSO OUTROS
+<br>**X12** - LES√ÉO CORPORAL SEGUIDA DE MORTE
 
 
 RC3:
 <br>**X3** - FURTO - OUTROS
-<br>**X7** - HOMICÕDIO DOLOSO POR ACIDENTE DE TR¬NSITO
+<br>**X7** - HOMIC√çDIO DOLOSO POR ACIDENTE DE TR√ÇNSITO
 <br>**X13** - ROUBO - OUTROS
 
 

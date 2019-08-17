@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1566055675281.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3AEE5A63",
+    "lastKnownWriteTime" : 23925574890291317,
+    "last_content_update" : 1566055675281,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "7F6279DB",
+        "caption" : "dados.join",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=dados.join&cache_key=7F6279DB",
+        "displayedObservations" : "93",
+        "environment" : "",
+        "object" : "dados.join",
+        "preview" : "0",
+        "totalObservations" : "93",
+        "variables" : "19"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
