@@ -1,18 +1,154 @@
 ---
-title: "R Notebook"
-output: html_notebook
+title: "R Notebook - clusters tcc"
+author: "Patricia Felipe e Leandro"
+date: "11 de junho de 2019"
+output: html_document
 ---
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
 
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
 
-```{r}
-plot(cars)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+if(!require(tidyverse)){install.packages("tidyverse")}
+if(!require(cluster)){install.packages("cluster")}
+if(!require(NbClust)){install.packages("NbClust")}
+if(!require(pvclust)){install.packages('pvclust')}
+if(!require(ggplot2)){install.packages('ggplot2')}
+#if(!require(gridExtra)){install.packages('gridExtra')}
+if(!require(plotly)){install.packages('plotly')}
+
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+```{r Funções utilizadas no Gráfico de Cotovelo, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+# within sum of squares
+wss <- function(d) {
+  sum(scale(d, scale = FALSE)^2)
+}
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+# wrap the data
+wrap <- function(i, hc, x) {
+  cl <- cutree(hc, i)
+  spl <- split(x, cl)
+  wss <- sum(sapply(spl, wss))
+  wss
+}
+
+elbow_plot<- function(data, dissim,met){
+  cl = hclust(dissim, method = met)  
+  res <- sapply(seq.int(1, nrow(data)), 
+                wrap, h =cl, 
+                x = data)
+  return(res)
+}
+```
+
+
+
+Lendo Arquivo:
+```{r}
+dados.acp <- read.csv2('base_acp_scores.csv', sep=';')
+
+glimpse(dados.acp)
+```
+
+
+Correlação entre as variáveis
+
+```{r matriz de correlação, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+library(corrplot)
+cor <- cor(t(dados.acp[,3:7]))
+#cor
+#corrplot.mixed(cor, tl.col = "black")
+corrplot(cor, tl.col = "black")
+```
+
+
+
+Criar histograma das distribuições.
+
+
+
+### Definindo a quantidade de CLUSTERS
+
+
+```{r}
+dados.acp.num <- dados.acp[,3:7]
+
+
+dis_euclidiana <- dist(dados.acp.num, method="euclidean")
+
+
+elbow_data<-data.frame(ward = elbow_plot(data=dados.acp.num, dissim= dis_euclidiana, 
+                                         met = "ward.D"),
+                       upgma = elbow_plot(data=dados.acp.num,dissim= dis_euclidiana, 
+                                          met = "average"),
+                       wpgmc = elbow_plot(data=dados.acp.num,dissim= dis_euclidiana, 
+                                          met = "median"),
+                       wpgma = elbow_plot(data=dados.acp.num,dissim= dis_euclidiana, 
+                                          met = "mcquitty"),
+                       upgmc = elbow_plot(data=dados.acp.num,dissim= dis_euclidiana, 
+                                          met = "centroid"),
+                       k = seq.int(1, nrow(dados.acp.num))) %>%
+   gather(key="Metodo",value="WSS",-k)
+
+
+elbow_data <- elbow_data %>% filter(k<=30)
+
+
+```
+
+
+
+```{r Plotando Cotovelo, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+ggplot(elbow_data %>% filter(k<=20), 
+                    aes(x=k,y=WSS, 
+                       group=Metodo, 
+                       color=Metodo, 
+                       alpha = 0.8)) +
+  geom_line(size=1.5 ,linetype = 1) + theme_bw()
+
+```
+
+
+A visualização hierárquica dos métodos pode ser visualizada na figura abaixo
+&nbsp;
+
+
+```{r Calculando clusteres hierárquicos, echo=FALSE}
+
+ward <-hclust(dis_euclidiana, method = 'ward.D2')
+upgma<-hclust(dis_euclidiana, method = 'average')
+wpgmc<-hclust(dis_euclidiana, method = 'median')
+wpgma<-hclust(dis_euclidiana, method = 'mcquitty')
+upgmc<-hclust(dis_euclidiana, method = 'centroid')
+
+```
+
+```{r Hierarquias, echo=FALSE, message=FALSE, warning=FALSE}
+
+par(mfrow=c(2,3))
+plot(ward , main = 'Ward')
+plot(upgma, main = 'UPGMA')
+plot(wpgmc, main = 'WPGMC')
+plot(wpgma, main = 'WPGMA')
+plot(upgmc, main = 'UPGMC')
+par(mfrow=c(1,1))
+
+plot(ward , main = 'Ward')
+```
+&nbsp;
+
+
+
+```{r Ward, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+grupos.ward <- cutree(ward, k=5)
+table.ward <- table(grupos.ward) %>% data.frame
+table.ward
+plot_ly(x=1:5, y=table.ward$Freq, type="bar" )
+
+```

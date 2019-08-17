@@ -1,0 +1,4 @@
+"0","nrow(data.cards)
+"
+"2","Error in nrow(data.cards) : object 'data.cards' not found
+"

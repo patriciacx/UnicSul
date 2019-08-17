@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1566055431903.000,
+    "dirty" : false,
+    "encoding" : "ISO8859-1",
+    "folds" : "",
+    "hash" : "654121192",
+    "id" : "CF8C6283",
+    "lastKnownWriteTime" : 1566055808,
+    "last_content_update" : 1566055808308,
+    "path" : "~/GitHub/UnicSul/2_dataprep.R",
+    "project_path" : "2_dataprep.R",
+    "properties" : {
+        "cursorPosition" : "72,0",
+        "scrollLine" : "41"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

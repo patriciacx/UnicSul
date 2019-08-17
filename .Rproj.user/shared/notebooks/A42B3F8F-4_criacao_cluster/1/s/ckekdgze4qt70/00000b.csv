@@ -1,0 +1,5 @@
+"0","library(corrplot)"
+"0","cor <- cor(t(dados.acp[,3:7]))"
+"0","#cor"
+"0","#corrplot.mixed(cor, tl.col = ""black"")"
+"0","corrplot(cor, tl.col = ""black"")"

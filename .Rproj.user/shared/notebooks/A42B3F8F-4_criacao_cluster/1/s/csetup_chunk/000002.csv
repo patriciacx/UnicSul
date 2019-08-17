@@ -1,0 +1,8 @@
+"0","knitr::opts_chunk$set(echo = FALSE)"
+"0","if(!require(tidyverse)){install.packages(""tidyverse"")}"
+"0","if(!require(cluster)){install.packages(""cluster"")}"
+"0","if(!require(NbClust)){install.packages(""NbClust"")}"
+"0","if(!require(pvclust)){install.packages('pvclust')}"
+"0","if(!require(ggplot2)){install.packages('ggplot2')}"
+"0","#if(!require(gridExtra)){install.packages('gridExtra')}"
+"0","if(!require(plotly)){install.packages('plotly')}"
