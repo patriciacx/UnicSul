@@ -36,12 +36,13 @@ glimpse(dados.join)
 
 #RENOMEANDO AS VARIAVEIS
 
-variaveis <- cbind(paste('X',1:19, sep =''),
+variaveis <- cbind(paste('X',1:18, sep =''),
              colnames(dados.join)[3:20])
 variaveis
 
-colnames(dados.join)[3:23] <- paste('X',1:23, sep ='')
+colnames(dados.join)[3:20] <- paste('X',1:18, sep ='')
 
 
 write.csv2(dados.join, 'base_boletins_tcc.csv',row.names=FALSE)
 write.csv2(variaveis, 'variaveis.csv',row.names=FALSE)
+
