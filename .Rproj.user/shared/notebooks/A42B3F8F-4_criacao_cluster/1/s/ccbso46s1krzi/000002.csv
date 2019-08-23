@@ -1,6 +1,0 @@
-"0","ggplot(elbow_data %>% filter(k<=20), "
-"0","                    aes(x=k,y=WSS, "
-"0","                       group=Metodo, "
-"0","                       color=Metodo, "
-"0","                       alpha = 0.8)) +"
-"0","  geom_line(size=1.5 ,linetype = 1) + theme_bw()"

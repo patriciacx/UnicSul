@@ -69,6 +69,14 @@ corrplot(cor, tl.col = "black")
 
 Criar histograma das distribuições.
 
+```{r}
+
+summary(abs(as.vector(cor)))
+
+hist(as.vector(cor))
+hist(abs(as.vector(cor)))
+
+```
 
 
 ### Definindo a quantidade de CLUSTERS
@@ -152,3 +160,15 @@ table.ward
 plot_ly(x=1:5, y=table.ward$Freq, type="bar" )
 
 ```
+
+
+```{r}
+
+result <- cbind(
+  dados.acp,
+  grupos.ward)
+
+write.csv2(result, 'result_cluster.csv')
+
+```
+

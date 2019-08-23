@@ -247,6 +247,29 @@ fit2</code></pre>
 <p>RC2: <br><strong>X9</strong> - LESÃO CORPORAL CULPOSA - OUTRAS <br><strong>X14</strong>- ROUBO A BANCO <br><strong>X16</strong>- ROUBO DE VEÍCULO <em>NEGATIVO</em></p>
 <p>RC3: <br><strong>X5</strong> - HOMICÍDIO CULPOSO OUTROS <br><strong>X12</strong> - LESÃO CORPORAL SEGUIDA DE MORTE</p>
 <p>RC5: <br><strong>X7</strong> - HOMICÍDIO DOLOSO POR ACIDENTE DE TRÂNSITO <br><strong>X13</strong> - ROUBO - OUTROS</p>
+<div id="gravando-o-arquivo-para-o-proximo-passo" class="section level1">
+<h1>Gravando o arquivo para o próximo passo</h1>
+<pre class="r"><code>base_acp_scores &lt;- 
+  cbind( dados[,1:2], 
+         fit2$scores)
+
+head(base_acp_scores)</code></pre>
+<pre><code>##   delegacia_id               delegacia         RC1         RC4        RC2
+## 1          901   099 DP - Campo Grande -1.61907728  0.61937271 -1.1512980
+## 2          902  098 DP - Jardim Míriam  0.59002448 -0.28002844 -1.0110629
+## 3          903 097 DP - Americanópolis -0.09905364 -0.28488749 -0.8221308
+## 4          904        096 DP - Monções -0.48217644  0.04335325  1.9592872
+## 5          905     095 DP - Heliópolis  0.66738962 -0.60093489 -0.4788733
+## 6          907        093 DP - Jaguaré -0.45278721  0.11397717 -0.1679652
+##           RC3        RC5
+## 1  1.43222420  0.5525202
+## 2 -1.00980890 -0.6526610
+## 3 -0.27793695 -0.6941104
+## 4  0.12849195 -0.5328447
+## 5 -1.23123290  0.0502624
+## 6 -0.01779919 -0.4775915</code></pre>
+<pre class="r"><code>write.csv2(base_acp_scores, 'base_acp_scores.csv',row.names=FALSE)</code></pre>
+</div>
 
 
 
