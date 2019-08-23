@@ -162,12 +162,17 @@
         </metadata-records>
       </connection>
       <aliases enabled='yes' />
+      <column datatype='string' hidden='true' name='[F5]' role='dimension' type='nominal' />
+      <column datatype='integer' hidden='true' name='[F6]' role='measure' type='quantitative' />
+      <column datatype='integer' hidden='true' name='[F7]' role='measure' type='quantitative' />
+      <column datatype='string' hidden='true' name='[F8]' role='dimension' type='nominal' />
+      <column datatype='integer' hidden='true' name='[F9]' role='measure' type='quantitative' />
       <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
       <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
       <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
         <calculation class='tableau' formula='1' />
       </column>
-      <column caption='Cod' datatype='integer' name='[cod]' role='measure' type='quantitative' />
+      <column aggregation='Sum' caption='Cod' datatype='integer' name='[cod]' role='dimension' type='ordinal' />
       <column caption='Delegacia' datatype='string' name='[delegacia]' role='dimension' type='nominal' />
       <layout dim-ordering='alphabetic' dim-percentage='0.510373' measure-ordering='alphabetic' measure-percentage='0.489627' show-structure='true' />
       <semantic-values>
@@ -192,7 +197,7 @@
     </mapsource>
   </mapsources>
   <worksheets>
-    <worksheet name='Sheet 1'>
+    <worksheet name='Mapa'>
       <table>
         <view>
           <datasources>
@@ -212,6 +217,10 @@
           <aggregation value='true' />
         </view>
         <style>
+          <style-rule element='worksheet'>
+            <format attr='in-tooltip' field='[federated.07z0t971dztbyx191md251dtq31w].[avg:Longitude:qk]' value='false' />
+            <format attr='in-tooltip' field='[federated.07z0t971dztbyx191md251dtq31w].[avg:Latitude:qk]' value='false' />
+          </style-rule>
           <style-rule element='map-layer'>
             <format attr='enabled' id='OSM-WMS' value='true' />
             <format attr='enabled' id='OSM-Overlay-WMS' value='false' />
@@ -245,7 +254,7 @@
     </worksheet>
   </worksheets>
   <windows source-height='30'>
-    <window class='worksheet' maximized='true' name='Sheet 1'>
+    <window class='worksheet' maximized='true' name='Mapa'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -303,7 +312,7 @@
     </window>
   </windows>
   <thumbnails>
-    <thumbnail height='192' name='Sheet 1' width='192'>
+    <thumbnail height='192' name='Mapa' width='192'>
       iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
       AAAgAElEQVR4nMS9yY9lWZbu9dvtaW5jnffu0WZkVVZWUY9XQCHEQ0JPIAESExAMeAgJiT8A
       BogpM6aMkJgyYcYAEAyQmIAeD4qCoh5ZmWRkZmQ03pm5m9ltT7ObxWAfu+4e4dFWlmqHTPIw
