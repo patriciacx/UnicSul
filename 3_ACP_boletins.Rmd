@@ -58,15 +58,18 @@ Seguindo a Análise com 6 componentes:
 
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 
-fit2 <- principal(dados.scale, covar = FALSE, nfactors = 5) 
+fit_sem_rotacao <- principal(dados.scale, covar = FALSE, nfactors = 5) 
+
+fit_oblimin     <- principal(dados.scale, covar = FALSE, nfactors = 5, rotate='oblimin') 
  
-fit2
+fit_oblimin
 
 ```
 
 
 ```{r}
-corrplot(t(fit2$loadings))
+corrplot(t(fit_sem_rotacao$loadings))
+corrplot(t(fit_oblimin$loadings))
 ```
 Relações:
 
