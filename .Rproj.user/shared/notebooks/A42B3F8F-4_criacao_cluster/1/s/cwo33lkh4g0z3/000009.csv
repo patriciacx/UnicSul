@@ -1,4 +1,0 @@
-"0","result <- cbind("
-"0","  dados.acp,"
-"0","  grupos.ward)"
-"0","write.csv2(result, 'result_cluster.csv')"

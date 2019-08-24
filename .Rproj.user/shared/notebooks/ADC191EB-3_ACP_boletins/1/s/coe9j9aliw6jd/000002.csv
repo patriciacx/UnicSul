@@ -1,4 +1,0 @@
-"0","write.csv2(dados.join, 'base_acp_scores.csv',row.names=FALSE)
-"
-"2","Error in is.data.frame(x) : object 'dados.join' not found
-"

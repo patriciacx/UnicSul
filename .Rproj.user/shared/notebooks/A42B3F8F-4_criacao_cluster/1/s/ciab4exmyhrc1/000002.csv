@@ -1,5 +1,0 @@
-"0","ward <-hclust(dis_euclidiana, method = 'ward.D2')"
-"0","upgma<-hclust(dis_euclidiana, method = 'average')"
-"0","wpgmc<-hclust(dis_euclidiana, method = 'median')"
-"0","wpgma<-hclust(dis_euclidiana, method = 'mcquitty')"
-"0","upgmc<-hclust(dis_euclidiana, method = 'centroid')"
