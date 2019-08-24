@@ -48,9 +48,15 @@ elbow_plot<- function(data, dissim,met){
 
 Lendo Arquivo:
 ```{r}
-dados.acp <- read.csv2('base_acp_scores.csv', sep=';')
+dados <- read.csv2('base_boletins_tcc.csv', sep=';')
 
-glimpse(dados.acp)
+glimpse(dados)
+```
+
+Escalonamento:
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+dados.scale <- scale(dados[,-c(1:2)]) %>% as.data.frame()
+head(dados.scale)
 ```
 
 
@@ -59,7 +65,7 @@ Correlação entre as variáveis
 ```{r matriz de correlação, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 
 library(corrplot)
-cor <- cor(t(dados.acp[,3:7]))
+cor <- cor(t(dados.scale))
 #cor
 #corrplot.mixed(cor, tl.col = "black")
 corrplot(cor, tl.col = "black")
@@ -83,23 +89,21 @@ hist(abs(as.vector(cor)))
 
 
 ```{r}
-dados.acp.num <- dados.acp[,3:7]
+
+dis_euclidiana <- dist(dados.scale, method="euclidean")
 
 
-dis_euclidiana <- dist(dados.acp.num, method="euclidean")
-
-
-elbow_data<-data.frame(ward = elbow_plot(data=dados.acp.num, dissim= dis_euclidiana, 
+elbow_data<-data.frame(ward = elbow_plot(data=dados.scale, dissim= dis_euclidiana, 
                                          met = "ward.D"),
-                       upgma = elbow_plot(data=dados.acp.num,dissim= dis_euclidiana, 
+                       upgma = elbow_plot(data=dados.scale,dissim= dis_euclidiana, 
                                           met = "average"),
-                       wpgmc = elbow_plot(data=dados.acp.num,dissim= dis_euclidiana, 
+                       wpgmc = elbow_plot(data=dados.scale,dissim= dis_euclidiana, 
                                           met = "median"),
-                       wpgma = elbow_plot(data=dados.acp.num,dissim= dis_euclidiana, 
+                       wpgma = elbow_plot(data=dados.scale,dissim= dis_euclidiana, 
                                           met = "mcquitty"),
-                       upgmc = elbow_plot(data=dados.acp.num,dissim= dis_euclidiana, 
+                       upgmc = elbow_plot(data=dados.scale,dissim= dis_euclidiana, 
                                           met = "centroid"),
-                       k = seq.int(1, nrow(dados.acp.num))) %>%
+                       k = seq.int(1, nrow(dados.scale))) %>%
    gather(key="Metodo",value="WSS",-k)
 
 
@@ -165,10 +169,10 @@ plot_ly(x=1:5, y=table.ward$Freq, type="bar" )
 ```{r}
 
 result <- cbind(
-  dados.acp,
+  dados,
   grupos.ward)
 
-write.csv2(result, 'result_cluster.csv')
+write.csv2(result, 'result_cluster_Sem_acp.csv')
 
 ```
 

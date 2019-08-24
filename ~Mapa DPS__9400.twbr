@@ -5,6 +5,7 @@
   <document-format-change-manifest>
     <AutoCreateAndUpdateDSDPhoneLayouts />
     <SheetIdentifierTracking />
+    <SortTagCleanup />
     <WindowsPersistSimpleIdentifiers />
   </document-format-change-manifest>
   <preferences>
@@ -21,42 +22,79 @@
           <named-connection caption='result_cluster' name='textscan.1c6mc6k0psnebd1ctdrtp1qbjep8'>
             <connection class='textscan' directory='C:/Users/Patricia/Documents/GitHub/UnicSul' filename='result_cluster.csv' password='' server='' />
           </named-connection>
+          <named-connection caption='result_cluster_Sem_acp' name='textscan.1atrzts0y704p216m6atz19emh5h'>
+            <connection class='textscan' directory='C:/Users/Patricia/Documents/GitHub/UnicSul' filename='result_cluster_Sem_acp.csv' password='' server='' />
+          </named-connection>
         </named-connections>
         <relation join='inner' type='join'>
           <clause type='join'>
             <expression op='='>
               <expression op='[LocDPS.csv].[cod]' />
-              <expression op='[result_cluster.csv].[delegacia_id]' />
+              <expression op='[result_cluster_Sem_acp.csv].[delegacia_id]' />
             </expression>
           </clause>
-          <relation connection='textscan.040lnqf10ds6oo13yq2fm1kvvwqy' name='LocDPS.csv' table='[LocDPS#csv]' type='table'>
-            <columns character-set='UTF-8' header='yes' locale='pt_BR' separator=';'>
-              <column datatype='integer' name='cod' ordinal='0' />
-              <column datatype='string' name='delegacia' ordinal='1' />
-              <column datatype='real' name='Latitude' ordinal='2' />
-              <column datatype='real' name='Longitude' ordinal='3' />
-              <column datatype='string' name='F5' ordinal='4' />
-              <column datatype='integer' name='F6' ordinal='5' />
-              <column datatype='integer' name='F7' ordinal='6' />
-              <column datatype='string' name='F8' ordinal='7' />
-              <column datatype='integer' name='F9' ordinal='8' />
-            </columns>
+          <relation join='inner' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[LocDPS.csv].[cod]' />
+                <expression op='[result_cluster.csv].[delegacia_id]' />
+              </expression>
+            </clause>
+            <relation connection='textscan.040lnqf10ds6oo13yq2fm1kvvwqy' name='LocDPS.csv' table='[LocDPS#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='pt_BR' separator=';'>
+                <column datatype='integer' name='cod' ordinal='0' />
+                <column datatype='string' name='delegacia' ordinal='1' />
+                <column datatype='real' name='Latitude' ordinal='2' />
+                <column datatype='real' name='Longitude' ordinal='3' />
+                <column datatype='string' name='F5' ordinal='4' />
+                <column datatype='integer' name='F6' ordinal='5' />
+                <column datatype='integer' name='F7' ordinal='6' />
+                <column datatype='string' name='F8' ordinal='7' />
+                <column datatype='integer' name='F9' ordinal='8' />
+              </columns>
+            </relation>
+            <relation connection='textscan.1c6mc6k0psnebd1ctdrtp1qbjep8' name='result_cluster.csv' table='[result_cluster#csv]' type='table'>
+              <columns character-set='windows-1252' header='yes' locale='pt_BR' separator=';'>
+                <column datatype='integer' name='F1' ordinal='0' />
+                <column datatype='integer' name='delegacia_id' ordinal='1' />
+                <column datatype='string' name='delegacia' ordinal='2' />
+                <column datatype='real' name='RC1' ordinal='3' />
+                <column datatype='real' name='RC4' ordinal='4' />
+                <column datatype='real' name='RC2' ordinal='5' />
+                <column datatype='real' name='RC3' ordinal='6' />
+                <column datatype='real' name='RC5' ordinal='7' />
+                <column datatype='integer' name='grupos.ward' ordinal='8' />
+              </columns>
+            </relation>
           </relation>
-          <relation connection='textscan.1c6mc6k0psnebd1ctdrtp1qbjep8' name='result_cluster.csv' table='[result_cluster#csv]' type='table'>
+          <relation connection='textscan.1atrzts0y704p216m6atz19emh5h' name='result_cluster_Sem_acp.csv' table='[result_cluster_Sem_acp#csv]' type='table'>
             <columns character-set='windows-1252' header='yes' locale='pt_BR' separator=';'>
               <column datatype='integer' name='F1' ordinal='0' />
               <column datatype='integer' name='delegacia_id' ordinal='1' />
               <column datatype='string' name='delegacia' ordinal='2' />
-              <column datatype='real' name='RC1' ordinal='3' />
-              <column datatype='real' name='RC4' ordinal='4' />
-              <column datatype='real' name='RC2' ordinal='5' />
-              <column datatype='real' name='RC3' ordinal='6' />
-              <column datatype='real' name='RC5' ordinal='7' />
-              <column datatype='integer' name='grupos.ward' ordinal='8' />
+              <column datatype='integer' name='X1' ordinal='3' />
+              <column datatype='integer' name='X2' ordinal='4' />
+              <column datatype='real' name='X3' ordinal='5' />
+              <column datatype='real' name='X4' ordinal='6' />
+              <column datatype='integer' name='X5' ordinal='7' />
+              <column datatype='integer' name='X6' ordinal='8' />
+              <column datatype='integer' name='X7' ordinal='9' />
+              <column datatype='integer' name='X8' ordinal='10' />
+              <column datatype='integer' name='X9' ordinal='11' />
+              <column datatype='integer' name='X10' ordinal='12' />
+              <column datatype='integer' name='X11' ordinal='13' />
+              <column datatype='integer' name='X12' ordinal='14' />
+              <column datatype='real' name='X13' ordinal='15' />
+              <column datatype='integer' name='X14' ordinal='16' />
+              <column datatype='integer' name='X15' ordinal='17' />
+              <column datatype='real' name='X16' ordinal='18' />
+              <column datatype='integer' name='X17' ordinal='19' />
+              <column datatype='integer' name='grupos.ward' ordinal='20' />
             </columns>
           </relation>
         </relation>
         <cols>
+          <map key='[F1 (result_cluster_Sem_acp.csv)]' value='[result_cluster_Sem_acp.csv].[F1]' />
           <map key='[F1]' value='[result_cluster.csv].[F1]' />
           <map key='[F5]' value='[LocDPS.csv].[F5]' />
           <map key='[F6]' value='[LocDPS.csv].[F6]' />
@@ -70,10 +108,30 @@
           <map key='[RC3]' value='[result_cluster.csv].[RC3]' />
           <map key='[RC4]' value='[result_cluster.csv].[RC4]' />
           <map key='[RC5]' value='[result_cluster.csv].[RC5]' />
+          <map key='[X10]' value='[result_cluster_Sem_acp.csv].[X10]' />
+          <map key='[X11]' value='[result_cluster_Sem_acp.csv].[X11]' />
+          <map key='[X12]' value='[result_cluster_Sem_acp.csv].[X12]' />
+          <map key='[X13]' value='[result_cluster_Sem_acp.csv].[X13]' />
+          <map key='[X14]' value='[result_cluster_Sem_acp.csv].[X14]' />
+          <map key='[X15]' value='[result_cluster_Sem_acp.csv].[X15]' />
+          <map key='[X16]' value='[result_cluster_Sem_acp.csv].[X16]' />
+          <map key='[X17]' value='[result_cluster_Sem_acp.csv].[X17]' />
+          <map key='[X1]' value='[result_cluster_Sem_acp.csv].[X1]' />
+          <map key='[X2]' value='[result_cluster_Sem_acp.csv].[X2]' />
+          <map key='[X3]' value='[result_cluster_Sem_acp.csv].[X3]' />
+          <map key='[X4]' value='[result_cluster_Sem_acp.csv].[X4]' />
+          <map key='[X5]' value='[result_cluster_Sem_acp.csv].[X5]' />
+          <map key='[X6]' value='[result_cluster_Sem_acp.csv].[X6]' />
+          <map key='[X7]' value='[result_cluster_Sem_acp.csv].[X7]' />
+          <map key='[X8]' value='[result_cluster_Sem_acp.csv].[X8]' />
+          <map key='[X9]' value='[result_cluster_Sem_acp.csv].[X9]' />
           <map key='[cod]' value='[LocDPS.csv].[cod]' />
           <map key='[delegacia (result_cluster.csv)]' value='[result_cluster.csv].[delegacia]' />
+          <map key='[delegacia (result_cluster_Sem_acp.csv)]' value='[result_cluster_Sem_acp.csv].[delegacia]' />
           <map key='[delegacia]' value='[LocDPS.csv].[delegacia]' />
+          <map key='[delegacia_id (result_cluster_Sem_acp.csv)]' value='[result_cluster_Sem_acp.csv].[delegacia_id]' />
           <map key='[delegacia_id]' value='[result_cluster.csv].[delegacia_id]' />
+          <map key='[grupos.ward (result_cluster_Sem_acp.csv)]' value='[result_cluster_Sem_acp.csv].[grupos.ward]' />
           <map key='[grupos.ward]' value='[result_cluster.csv].[grupos.ward]' />
         </cols>
         <metadata-records>
@@ -325,9 +383,263 @@
             <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
           </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;ibm-5348_P100-1997&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;pt_BR&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;R$&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;;&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;pt_BR&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1 (result_cluster_Sem_acp.csv)]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>delegacia_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[delegacia_id (result_cluster_Sem_acp.csv)]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>delegacia_id</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>delegacia</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[delegacia (result_cluster_Sem_acp.csv)]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>delegacia</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LPT_RBR' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>X1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[X1]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>X1</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>X2</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[X2]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>X2</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>X3</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[X3]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>X3</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>X4</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[X4]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>X4</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>X5</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[X5]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>X5</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>X6</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[X6]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>X6</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>X7</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[X7]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>X7</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>X8</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[X8]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>X8</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>X9</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[X9]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>X9</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>X10</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[X10]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>X10</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>X11</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[X11]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>X11</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>X12</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[X12]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>X12</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>X13</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[X13]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>X13</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>X14</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[X14]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>X14</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>X15</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[X15]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>X15</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>X16</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[X16]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>X16</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>X17</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[X17]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>X17</remote-alias>
+            <ordinal>37</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>grupos.ward</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[grupos.ward (result_cluster_Sem_acp.csv)]</local-name>
+            <parent-name>[result_cluster_Sem_acp.csv]</parent-name>
+            <remote-alias>grupos.ward</remote-alias>
+            <ordinal>38</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
         </metadata-records>
       </connection>
       <aliases enabled='yes' />
+      <column caption='F1 (result cluster Sem acp.csv)' datatype='integer' name='[F1 (result_cluster_Sem_acp.csv)]' role='measure' type='quantitative' />
       <column datatype='integer' name='[F1]' role='measure' type='quantitative' />
       <column datatype='string' hidden='true' name='[F5]' role='dimension' type='nominal' />
       <column datatype='integer' hidden='true' name='[F6]' role='measure' type='quantitative' />
@@ -346,8 +658,11 @@
       <column datatype='real' name='[RC5]' role='measure' type='quantitative' />
       <column aggregation='Sum' caption='Cod' datatype='integer' name='[cod]' role='dimension' type='ordinal' />
       <column caption='Delegacia (Result Cluster.Csv)' datatype='string' name='[delegacia (result_cluster.csv)]' role='dimension' type='nominal' />
+      <column caption='delegacia (result cluster Sem acp.csv)' datatype='string' name='[delegacia (result_cluster_Sem_acp.csv)]' role='dimension' type='nominal' />
       <column caption='Delegacia' datatype='string' name='[delegacia]' role='dimension' type='nominal' />
+      <column caption='delegacia id (result cluster Sem acp.csv)' datatype='integer' name='[delegacia_id (result_cluster_Sem_acp.csv)]' role='dimension' type='ordinal' />
       <column caption='Delegacia Id' datatype='integer' name='[delegacia_id]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='grupos.ward (result cluster Sem acp.csv)' datatype='integer' name='[grupos.ward (result_cluster_Sem_acp.csv)]' role='dimension' type='ordinal' />
       <column aggregation='Sum' caption='Grupos.Ward' datatype='integer' name='[grupos.ward]' role='dimension' type='ordinal' />
       <column-instance column='[Latitude]' derivation='Avg' name='[avg:Latitude:qk]' pivot='key' type='quantitative' />
       <column-instance column='[Longitude]' derivation='Avg' name='[avg:Longitude:qk]' pivot='key' type='quantitative' />
@@ -356,6 +671,7 @@
       <column-instance column='[RC3]' derivation='Avg' name='[avg:RC3:qk]' pivot='key' type='quantitative' />
       <column-instance column='[RC4]' derivation='Avg' name='[avg:RC4:qk]' pivot='key' type='quantitative' />
       <column-instance column='[RC5]' derivation='Avg' name='[avg:RC5:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[grupos.ward (result_cluster_Sem_acp.csv)]' derivation='None' name='[none:grupos.ward (result_cluster_Sem_acp.csv):ok]' pivot='key' type='ordinal' />
       <column-instance column='[grupos.ward]' derivation='None' name='[none:grupos.ward:ok]' pivot='key' type='ordinal' />
       <column-instance column='[F1]' derivation='Sum' name='[sum:F1:qk]' pivot='key' type='quantitative' />
       <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
@@ -373,6 +689,11 @@
       <group caption='Action (Grupos.Ward)' hidden='true' name='[Action (Grupos.Ward)]' name-style='unqualified' user:auto-column='sheet_link'>
         <groupfilter function='crossjoin'>
           <groupfilter function='level-members' level='[grupos.ward]' />
+        </groupfilter>
+      </group>
+      <group caption='Action (grupos.ward (result cluster Sem acp.csv))' hidden='true' name='[Action (grupos.ward (result cluster Sem acp.csv))]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[grupos.ward (result_cluster_Sem_acp.csv)]' />
         </groupfilter>
       </group>
       <layout dim-ordering='alphabetic' dim-percentage='0.43361' measure-ordering='alphabetic' measure-percentage='0.56639' show-structure='true' />
@@ -456,6 +777,40 @@
               <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:RC4:qk]&quot;</bucket>
             </map>
           </encoding>
+          <encoding attr='shape' field='[none:grupos.ward (result_cluster_Sem_acp.csv):ok]' palette=':filled' type='shape'>
+            <map to=':filled/asterisk'>
+              <bucket>5</bucket>
+            </map>
+            <map to=':filled/circle'>
+              <bucket>1</bucket>
+            </map>
+            <map to=':filled/plus'>
+              <bucket>3</bucket>
+            </map>
+            <map to=':filled/square'>
+              <bucket>2</bucket>
+            </map>
+            <map to=':filled/times'>
+              <bucket>4</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:grupos.ward (result_cluster_Sem_acp.csv):ok]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>1</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>5</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>4</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>3</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>2</bucket>
+            </map>
+          </encoding>
         </style-rule>
       </style>
       <semantic-values>
@@ -482,18 +837,26 @@
   <actions>
     <action caption='Filter 2 (generated)' name='[Action1]'>
       <activation auto-clear='true' type='on-select' />
-      <source dashboard='Dashboard 1' type='sheet' worksheet='Sheet 3' />
+      <source dashboard='Grupo Com ACP' type='sheet' worksheet='menu' />
       <command command='tsc:tsl-filter'>
         <param name='special-fields' value='all' />
-        <param name='target' value='Dashboard 1' />
+        <param name='target' value='Grupo Com ACP' />
       </command>
     </action>
     <action caption='Filter 1 (generated)' name='[Action2]'>
       <activation auto-clear='true' type='on-select' />
-      <source dashboard='Dashboard 1' type='sheet' worksheet='Mapa' />
+      <source dashboard='Grupo Com ACP' type='sheet' worksheet='Mapa' />
       <command command='tsc:tsl-filter'>
         <param name='special-fields' value='all' />
-        <param name='target' value='Dashboard 1' />
+        <param name='target' value='Grupo Com ACP' />
+      </command>
+    </action>
+    <action caption='Filter 3 (generated)' name='[Action3]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Dashboard 2' type='sheet' worksheet='menu sem acp' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Dashboard 2' />
       </command>
     </action>
   </actions>
@@ -574,7 +937,149 @@
       </table>
       <simple-id uuid='{7EF6D8FA-E87E-4D2B-ADE4-7C4A22D58F05}' />
     </worksheet>
+    <worksheet name='Cluster VS X'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='LocDPS' name='federated.07z0t971dztbyx191md251dtq31w' />
+          </datasources>
+          <datasource-dependencies datasource='federated.07z0t971dztbyx191md251dtq31w'>
+            <column datatype='integer' name='[X10]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[X11]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[X12]' role='measure' type='quantitative' />
+            <column datatype='real' name='[X13]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[X14]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[X15]' role='measure' type='quantitative' />
+            <column datatype='real' name='[X16]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[X17]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[X1]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[X2]' role='measure' type='quantitative' />
+            <column datatype='real' name='[X3]' role='measure' type='quantitative' />
+            <column datatype='real' name='[X4]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[X5]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[X6]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[X7]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[X8]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[X9]' role='measure' type='quantitative' />
+            <column aggregation='Sum' caption='grupos.ward (result cluster Sem acp.csv)' datatype='integer' name='[grupos.ward (result_cluster_Sem_acp.csv)]' role='dimension' type='ordinal' />
+            <column aggregation='Sum' caption='Grupos.Ward' datatype='integer' name='[grupos.ward]' role='dimension' type='ordinal' />
+            <column-instance column='[grupos.ward]' derivation='None' name='[none:grupos.ward:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[X10]' derivation='Sum' name='[sum:X10:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[X11]' derivation='Sum' name='[sum:X11:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[X12]' derivation='Sum' name='[sum:X12:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[X13]' derivation='Sum' name='[sum:X13:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[X14]' derivation='Sum' name='[sum:X14:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[X15]' derivation='Sum' name='[sum:X15:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[X16]' derivation='Sum' name='[sum:X16:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[X17]' derivation='Sum' name='[sum:X17:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[X1]' derivation='Sum' name='[sum:X1:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[X2]' derivation='Sum' name='[sum:X2:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[X3]' derivation='Sum' name='[sum:X3:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[X4]' derivation='Sum' name='[sum:X4:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[X5]' derivation='Sum' name='[sum:X5:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[X6]' derivation='Sum' name='[sum:X6:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[X7]' derivation='Sum' name='[sum:X7:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[X8]' derivation='Sum' name='[sum:X8:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[X9]' derivation='Sum' name='[sum:X9:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.07z0t971dztbyx191md251dtq31w].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X1:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X2:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X3:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X4:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X5:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X6:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X7:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X8:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X9:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X10:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X11:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X12:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X13:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X14:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X15:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X16:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X17:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.07z0t971dztbyx191md251dtq31w].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X1:qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X2:qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X3:qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X4:qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X5:qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X6:qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X7:qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X8:qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X9:qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X10:qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X11:qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X12:qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X13:qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X14:qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X15:qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X16:qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X17:qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <filter class='categorical' column='[federated.07z0t971dztbyx191md251dtq31w].[Action (grupos.ward (result cluster Sem acp.csv))]'>
+            <groupfilter function='level-members' level='[grupos.ward (result_cluster_Sem_acp.csv)]' user:ui-action-filter='[Action3]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.07z0t971dztbyx191md251dtq31w].[:Measure Names]</column>
+            <column>[federated.07z0t971dztbyx191md251dtq31w].[Action (grupos.ward (result cluster Sem acp.csv))]</column>
+          </slices>
+          <aggregation value='false' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.07z0t971dztbyx191md251dtq31w].[Multiple Values]' field-type='quantitative' max='4.0' min='-4.0' range-type='fixed' scope='cols' type='space' />
+            <format attr='display' class='0' field='[federated.07z0t971dztbyx191md251dtq31w].[Multiple Values]' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='stroke-size' scope='cols' value='1' />
+            <format attr='line-visibility' scope='cols' value='on' />
+            <format attr='line-pattern-only' scope='cols' value='solid' />
+            <format attr='stroke-color' scope='cols' value='#555555' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward:ok]' />
+            </encodings>
+            <reference-line axis-column='[federated.07z0t971dztbyx191md251dtq31w].[Multiple Values]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline0' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.07z0t971dztbyx191md251dtq31w].[Multiple Values]' z-order='1' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.47176796197891235' />
+                <format attr='mark-transparency' value='255' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.07z0t971dztbyx191md251dtq31w].[:Measure Names]</rows>
+        <cols>([federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward:ok] * [federated.07z0t971dztbyx191md251dtq31w].[Multiple Values])</cols>
+      </table>
+      <simple-id uuid='{35E85B0F-5591-4B97-883E-968F0A98C2FF}' />
+    </worksheet>
     <worksheet name='Mapa'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>&lt;Sheet Name&gt; com ACP</run>
+          </formatted-text>
+        </title>
+      </layout-options>
       <table>
         <view>
           <datasources>
@@ -649,7 +1154,82 @@
       </table>
       <simple-id uuid='{B4E5454A-F015-4728-AC29-26AFD774EBE3}' />
     </worksheet>
-    <worksheet name='Sheet 3'>
+    <worksheet name='Mapa Sem ACP'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='LocDPS' name='federated.07z0t971dztbyx191md251dtq31w' />
+          </datasources>
+          <mapsources>
+            <mapsource name='OpenStreetMap WMS' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.07z0t971dztbyx191md251dtq31w'>
+            <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+            <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+            <column-instance column='[Latitude]' derivation='Avg' name='[avg:Latitude:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Longitude]' derivation='Avg' name='[avg:Longitude:qk]' pivot='key' type='quantitative' />
+            <column caption='Delegacia' datatype='string' name='[delegacia]' role='dimension' type='nominal' />
+            <column aggregation='Sum' caption='grupos.ward (result cluster Sem acp.csv)' datatype='integer' name='[grupos.ward (result_cluster_Sem_acp.csv)]' role='dimension' type='ordinal' />
+            <column-instance column='[delegacia]' derivation='None' name='[none:delegacia:nk]' pivot='key' type='nominal' />
+            <column-instance column='[grupos.ward (result_cluster_Sem_acp.csv)]' derivation='None' name='[none:grupos.ward (result_cluster_Sem_acp.csv):ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.07z0t971dztbyx191md251dtq31w].[Action (grupos.ward (result cluster Sem acp.csv))]'>
+            <groupfilter function='level-members' level='[grupos.ward (result_cluster_Sem_acp.csv)]' user:ui-action-filter='[Action3]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.07z0t971dztbyx191md251dtq31w].[Action (grupos.ward (result cluster Sem acp.csv))]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.07z0t971dztbyx191md251dtq31w].[avg:Longitude:qk]' field-type='quantitative' max='-5162166.6300335368' min='-5212498.0280822068' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.07z0t971dztbyx191md251dtq31w].[avg:Latitude:qk]' field-type='quantitative' max='-2668401.439637288' min='-2744680.0808290583' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='in-tooltip' field='[federated.07z0t971dztbyx191md251dtq31w].[avg:Longitude:qk]' value='false' />
+            <format attr='in-tooltip' field='[federated.07z0t971dztbyx191md251dtq31w].[avg:Latitude:qk]' value='false' />
+          </style-rule>
+          <style-rule element='map-layer'>
+            <format attr='enabled' id='OSM-WMS' value='true' />
+            <format attr='enabled' id='OSM-Overlay-WMS' value='false' />
+            <format attr='enabled' id='TOPO-WMS' value='false' />
+            <format attr='enabled' id='TOPO-OSM-WMS' value='false' />
+            <format attr='enabled' id='SRTM30-Hillshade' value='false' />
+            <format attr='enabled' id='SRTM30-Colored' value='false' />
+            <format attr='enabled' id='SRTM30-Colored-Hillshade' value='false' />
+            <format attr='enabled' id='SRTM30-Contour' value='false' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.68999999761581421' />
+            <format attr='wrap' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Shape' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward (result_cluster_Sem_acp.csv):ok]' />
+              <shape column='[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward (result_cluster_Sem_acp.csv):ok]' />
+              <lod column='[federated.07z0t971dztbyx191md251dtq31w].[none:delegacia:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.3953038454055786' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.07z0t971dztbyx191md251dtq31w].[avg:Latitude:qk]</rows>
+        <cols>[federated.07z0t971dztbyx191md251dtq31w].[avg:Longitude:qk]</cols>
+      </table>
+      <simple-id uuid='{866C3A2D-EA70-4997-AA1B-90C8B2545979}' />
+    </worksheet>
+    <worksheet name='menu'>
       <table>
         <view>
           <datasources>
@@ -701,9 +1281,117 @@
       </table>
       <simple-id uuid='{95F831E0-18F2-4890-BF64-B9A11FBA82B2}' />
     </worksheet>
+    <worksheet name='menu sem acp'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='LocDPS' name='federated.07z0t971dztbyx191md251dtq31w' />
+          </datasources>
+          <datasource-dependencies datasource='federated.07z0t971dztbyx191md251dtq31w'>
+            <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+              <calculation class='tableau' formula='1' />
+            </column>
+            <column aggregation='Sum' caption='grupos.ward (result cluster Sem acp.csv)' datatype='integer' name='[grupos.ward (result_cluster_Sem_acp.csv)]' role='dimension' type='ordinal' />
+            <column-instance column='[grupos.ward (result_cluster_Sem_acp.csv)]' derivation='None' name='[none:grupos.ward (result_cluster_Sem_acp.csv):ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' value='84' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Shape' />
+            <encodings>
+              <color column='[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward (result_cluster_Sem_acp.csv):ok]' />
+              <shape column='[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward (result_cluster_Sem_acp.csv):ok]' />
+              <text column='[federated.07z0t971dztbyx191md251dtq31w].[sum:Number of Records:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward (result_cluster_Sem_acp.csv):ok]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{358BBC77-A44A-444A-A3C7-99FB38D10388}' />
+    </worksheet>
   </worksheets>
   <dashboards>
-    <dashboard name='Dashboard 1'>
+    <dashboard name='Dashboard 2'>
+      <style />
+      <size sizing-mode='automatic' />
+      <zones>
+        <zone h='100000' id='4' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='97832' id='7' param='horz' type='layout-flow' w='98828' x='586' y='1084'>
+            <zone h='97832' id='5' type='layout-basic' w='98828' x='586' y='1084'>
+              <zone h='23778' id='3' name='menu sem acp' show-title='false' w='49414' x='50000' y='1084'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='97832' id='10' name='Mapa Sem ACP' w='49414' x='586' y='1084'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='74054' id='13' name='Cluster VS X' show-title='false' w='49414' x='50000' y='24862'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='1' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='2' param='vert' type='layout-flow' w='84000' x='8000' y='8000' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{8CD3FB4D-3D1E-4E9C-82D7-B232EBCA3D6A}' />
+    </dashboard>
+    <dashboard name='Grupo Com ACP'>
       <style />
       <size sizing-mode='automatic' />
       <zones>
@@ -727,7 +1415,7 @@
                 </zone-style>
               </zone>
               <zone fixed-size='160' h='48649' id='6' is-fixed='true' param='vert' type='layout-flow' w='49297' x='50000' y='50000'>
-                <zone h='48648' id='11' name='Sheet 3' show-title='false' w='49297' x='50000' y='50000'>
+                <zone h='48648' id='11' name='menu' show-title='false' w='49297' x='50000' y='50000'>
                   <layout-cache cell-count-h='5' non-cell-size-h='20' type-h='cell' type-w='fixed' />
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -767,7 +1455,53 @@
     </dashboard>
   </dashboards>
   <windows source-height='30'>
-    <window class='worksheet' name='Mapa'>
+    <window class='dashboard' name='Grupo Com ACP'>
+      <viewpoints>
+        <viewpoint name='Cluster VS RC'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Mapa'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='menu'>
+          <zoom type='fit-height' />
+        </viewpoint>
+      </viewpoints>
+      <active id='11' />
+      <simple-id uuid='{F7ED4CD7-9CFF-4547-A383-B8B25CD9502F}' />
+    </window>
+    <window class='worksheet' name='Cluster VS X'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+          <strip size='160'>
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='1' param='[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{8985FACB-908E-4D24-B1F7-8CB4D8C4F81F}' />
+    </window>
+    <window class='worksheet' name='menu sem acp'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -789,14 +1523,58 @@
         </edge>
         <edge name='right'>
           <strip size='160'>
-            <card pane-specification-id='0' param='[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward:ok]' type='color' />
-            <card pane-specification-id='0' param='[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward:ok]' type='shape' />
+            <card pane-specification-id='0' param='[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward (result_cluster_Sem_acp.csv):ok]' type='color' />
+            <card pane-specification-id='0' param='[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward (result_cluster_Sem_acp.csv):ok]' type='shape' />
           </strip>
         </edge>
       </cards>
-      <simple-id uuid='{10F8BE72-5DD4-4856-88DC-44A7A850307F}' />
+      <simple-id uuid='{D7E8B1EB-6E83-45EC-8EE8-AC7BFF914901}' />
     </window>
-    <window class='worksheet' name='Cluster VS RC'>
+    <window class='worksheet' name='Mapa Sem ACP'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward (result_cluster_Sem_acp.csv):ok]' type='color' />
+            <card pane-specification-id='0' param='[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward (result_cluster_Sem_acp.csv):ok]' type='shape' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{5A8ADE73-1E51-4333-B9D3-892E619CE537}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Dashboard 2'>
+      <viewpoints>
+        <viewpoint name='Cluster VS X'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Mapa Sem ACP'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='menu sem acp'>
+          <zoom type='fit-height' />
+        </viewpoint>
+      </viewpoints>
+      <active id='3' />
+      <simple-id uuid='{C7A35FDA-3938-4A3B-BA99-8DA03C86017C}' />
+    </window>
+    <window class='worksheet' hidden='true' name='Cluster VS RC'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -825,22 +1603,36 @@
       </cards>
       <simple-id uuid='{15CA4328-B404-4F52-AC6A-DCC6E44FD3F3}' />
     </window>
-    <window class='dashboard' maximized='true' name='Dashboard 1'>
-      <viewpoints>
-        <viewpoint name='Cluster VS RC'>
-          <zoom type='entire-view' />
-        </viewpoint>
-        <viewpoint name='Mapa'>
-          <zoom type='entire-view' />
-        </viewpoint>
-        <viewpoint name='Sheet 3'>
-          <zoom type='fit-height' />
-        </viewpoint>
-      </viewpoints>
-      <active id='11' />
-      <simple-id uuid='{F7ED4CD7-9CFF-4547-A383-B8B25CD9502F}' />
+    <window class='worksheet' hidden='true' name='Mapa'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward:ok]' type='color' />
+            <card pane-specification-id='0' param='[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward:ok]' type='shape' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{10F8BE72-5DD4-4856-88DC-44A7A850307F}' />
     </window>
-    <window class='worksheet' name='Sheet 3'>
+    <window class='worksheet' hidden='true' name='menu'>
       <cards>
         <edge name='left'>
           <strip size='160'>
