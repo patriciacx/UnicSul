@@ -108,18 +108,18 @@ RC5:
 
 ```{r}
 
-base_acp_scores <- 
+base_acp_scores_oblimin <- 
   cbind( dados[,1:2], 
-         fit2$scores)
+         fit_oblimin$scores)
 
-head(base_acp_scores)
+head(base_acp_scores_oblimin)
 
 ```
 
 
 ```{r}
 
-write.csv2(base_acp_scores, 'base_acp_scores.csv',row.names=FALSE)
+write.csv2(base_acp_scores_oblimin, 'base_acp_scores_oblimin.csv',row.names=FALSE)
 
 ```
 

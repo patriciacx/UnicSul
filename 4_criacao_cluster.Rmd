@@ -48,7 +48,7 @@ elbow_plot<- function(data, dissim,met){
 
 Lendo Arquivo:
 ```{r}
-dados.acp <- read.csv2('base_acp_scores.csv', sep=';')
+dados.acp <- read.csv2('base_acp_scores_oblimin.csv', sep=';')
 
 glimpse(dados.acp)
 ```
@@ -59,7 +59,7 @@ Correlação entre as variáveis
 ```{r matriz de correlação, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 
 library(corrplot)
-cor <- cor(t(dados.acp[,3:7]))
+cor <- cor(t(dados.acp[,3:5]))
 #cor
 #corrplot.mixed(cor, tl.col = "black")
 corrplot(cor, tl.col = "black")
@@ -83,7 +83,7 @@ hist(abs(as.vector(cor)))
 
 
 ```{r}
-dados.acp.num <- dados.acp[,3:7]
+dados.acp.num <- dados.acp[,3:6]
 
 
 dis_euclidiana <- dist(dados.acp.num, method="euclidean")
