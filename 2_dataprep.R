@@ -3,7 +3,7 @@ library(dplyr)
 library(tidyr)
 
 
-setwd(dirname(rstudioapi::getSourceEditorContext()$path))
+#setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 getwd()
 
 
@@ -51,13 +51,35 @@ dados.join[,15:17] <- NULL
 dim(dados.join)
 glimpse(dados.join)
 
+
+## JUNTANDO HOMICIDIO DOLOCO E CULPOSO POR AC DE TRANSITO
+
+dados.join$homicidio_por_ac_transito <- 
+  dados.join$`HOMICÍDIO CULPOSO POR ACIDENTE DE TRÂNSITO` +
+  dados.join$`HOMICÍDIO DOLOSO POR ACIDENTE DE TRÂNSITO`
+
+dados.join$`HOMICÍDIO CULPOSO POR ACIDENTE DE TRÂNSITO` <- NULL
+dados.join$`HOMICÍDIO DOLOSO POR ACIDENTE DE TRÂNSITO` <- NULL
+
+## juntar lesao corporal seguida de morte e homicidio doloso
+
+
+dados.join$HomicidioDoloso <- 
+  dados.join$HomicidioDolosoExcetoTransito +
+  dados.join$`LESÃO CORPORAL SEGUIDA DE MORTE`
+
+dados.join$HomicidioDolosoExcetoTransito <- NULL
+dados.join$`LESÃO CORPORAL SEGUIDA DE MORTE` <- NULL
+
+
 #RENOMEANDO AS VARIAVEIS
 
-variaveis <- cbind(paste('X',1:17, sep =''),
-             colnames(dados.join)[3:19])
+variaveis <- cbind(paste('X',1:15, sep =''),
+             colnames(dados.join)[3:17])
 variaveis
 
-colnames(dados.join)[3:19] <- paste('X',1:19, sep ='')
+colnames(dados.join)[3:17] <- paste('X',1:17, sep ='')
+
 
 
 ### CONSIDERANDO SOMENTE AS DELECAGIAS REGIONAIS
@@ -73,4 +95,7 @@ dados.join <- dados.join[substr(dados.join$delegacia,5,6) == 'DP',]
 
 write.csv2(dados.join, 'base_boletins_tcc.csv',row.names=FALSE)
 write.csv2(variaveis, 'variaveis.csv',row.names=FALSE)
+
+
+### 
 
