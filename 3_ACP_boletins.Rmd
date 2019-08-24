@@ -19,6 +19,8 @@ Lendo Arquivo:
 dados <- read.csv2('base_boletins_tcc.csv', sep=';')
 
 glimpse(dados)
+dados$X11 <- NULL
+dados$X1 <- NULL
 ```
 
 Escalonamento:
@@ -60,9 +62,18 @@ Seguindo a Análise com 6 componentes:
 
 fit_sem_rotacao <- principal(dados.scale, covar = FALSE, nfactors = 4) 
 
+fit_sem_rotacao
+
+
+```
+
+
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+
+
 fit_oblimin     <- principal(dados.scale, covar = FALSE, nfactors = 4, rotate='oblimin') 
  
-fit_sem_rotacao
+#fit_sem_rotacao
 fit_oblimin
 
 ```
@@ -74,6 +85,31 @@ corrplot(t(fit_sem_rotacao$loadings))
 corrplot(t(fit_oblimin$loadings))
 par(mfrow=c(1,1))
 ```
+```{r}
+cor(fit_oblimin$loadings)
+```
+
+Não tem correlação forte, entao  fazer varimax
+
+
+
+```{r}
+fit_varimax     <- principal(dados.scale, covar = FALSE, nfactors = 4, rotate='varimax') 
+ 
+fit_varimax$loadings
+```
+
+
+```{r}
+
+par(mfrow=c(2,1))
+corrplot(t(fit_oblimin$loadings))
+corrplot(t(fit_varimax$loadings))
+par(mfrow=c(1,1))
+```
+
+
+
 Relações:
 
 RC1:
@@ -114,12 +150,22 @@ base_acp_scores_oblimin <-
 
 head(base_acp_scores_oblimin)
 
+write.csv2(base_acp_scores_oblimin, 'base_acp_scores_oblimin.csv',row.names=FALSE)
+
 ```
 
 
 ```{r}
 
-write.csv2(base_acp_scores_oblimin, 'base_acp_scores_oblimin.csv',row.names=FALSE)
+base_acp_scores_varimax <- 
+  cbind( dados[,1:2], 
+         fit_varimax$scores)
+
+head(base_acp_scores_varimax)
+
+write.csv2(base_acp_scores_varimax, 'base_acp_scores_varimax.csv',row.names=FALSE)
+
+
 
 ```
 

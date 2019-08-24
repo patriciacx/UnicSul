@@ -48,7 +48,7 @@ elbow_plot<- function(data, dissim,met){
 
 Lendo Arquivo:
 ```{r}
-dados.acp <- read.csv2('base_acp_scores_oblimin.csv', sep=';')
+dados.acp <- read.csv2('base_acp_scores_varimax.csv', sep=';')
 
 glimpse(dados.acp)
 ```

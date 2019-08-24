@@ -1,0 +1,22 @@
+---
+title: "2.1_Descritiva"
+author: "Patricia"
+date: "24 de agosto de 2019"
+output: html_document
+---
+
+Carregando Pacotes:
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(corrplot)
+library(psych)
+library(knitr)
+
+```
+
+Lendo Arquivo:
+```{r}
+dados <- read.csv2('base_boletins_tcc.csv', sep=';')
+
+glimpse(dados)
+dados$X11 <- NULL
