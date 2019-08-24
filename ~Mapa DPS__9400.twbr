@@ -122,8 +122,6 @@
               <column datatype='real' name='X13' ordinal='14' />
               <column datatype='integer' name='X14' ordinal='15' />
               <column datatype='integer' name='X15' ordinal='16' />
-              <column datatype='real' name='X16' ordinal='17' />
-              <column datatype='integer' name='X17' ordinal='18' />
             </columns>
           </relation>
         </relation>
@@ -155,9 +153,7 @@
           <map key='[X14]' value='[result_cluster_Sem_acp.csv].[X14]' />
           <map key='[X15 (base_boletins_tcc.csv)]' value='[base_boletins_tcc.csv].[X15]' />
           <map key='[X15]' value='[result_cluster_Sem_acp.csv].[X15]' />
-          <map key='[X16 (base_boletins_tcc.csv)]' value='[base_boletins_tcc.csv].[X16]' />
           <map key='[X16]' value='[result_cluster_Sem_acp.csv].[X16]' />
-          <map key='[X17 (base_boletins_tcc.csv)]' value='[base_boletins_tcc.csv].[X17]' />
           <map key='[X17]' value='[result_cluster_Sem_acp.csv].[X17]' />
           <map key='[X1]' value='[result_cluster_Sem_acp.csv].[X1]' />
           <map key='[X2 (base_boletins_tcc.csv)]' value='[base_boletins_tcc.csv].[X2]' />
@@ -323,7 +319,7 @@
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <attributes>
-              <attribute datatype='string' name='character-set'>&quot;ibm-5348_P100-1997&quot;</attribute>
+              <attribute datatype='string' name='character-set'>&quot;windows-1252&quot;</attribute>
               <attribute datatype='string' name='collation'>&quot;pt_BR&quot;</attribute>
               <attribute datatype='string' name='currency'>&quot;R$&quot;</attribute>
               <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
@@ -444,7 +440,7 @@
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <attributes>
-              <attribute datatype='string' name='character-set'>&quot;ibm-5348_P100-1997&quot;</attribute>
+              <attribute datatype='string' name='character-set'>&quot;windows-1252&quot;</attribute>
               <attribute datatype='string' name='collation'>&quot;pt_BR&quot;</attribute>
               <attribute datatype='string' name='currency'>&quot;R$&quot;</attribute>
               <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
@@ -697,7 +693,7 @@
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <attributes>
-              <attribute datatype='string' name='character-set'>&quot;ibm-5348_P100-1997&quot;</attribute>
+              <attribute datatype='string' name='character-set'>&quot;windows-1252&quot;</attribute>
               <attribute datatype='string' name='collation'>&quot;pt_BR&quot;</attribute>
               <attribute datatype='string' name='currency'>&quot;R$&quot;</attribute>
               <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
@@ -894,28 +890,6 @@
             <parent-name>[base_boletins_tcc.csv]</parent-name>
             <remote-alias>X15</remote-alias>
             <ordinal>55</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>X16</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[X16 (base_boletins_tcc.csv)]</local-name>
-            <parent-name>[base_boletins_tcc.csv]</parent-name>
-            <remote-alias>X16</remote-alias>
-            <ordinal>56</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>X17</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[X17 (base_boletins_tcc.csv)]</local-name>
-            <parent-name>[base_boletins_tcc.csv]</parent-name>
-            <remote-alias>X17</remote-alias>
-            <ordinal>57</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
@@ -1574,7 +1548,52 @@
             <column-instance column='[X8 (base_boletins_tcc.csv)]' derivation='Sum' name='[sum:X8 (base_boletins_tcc.csv):qk]' pivot='key' type='quantitative' />
             <column-instance column='[X9 (base_boletins_tcc.csv)]' derivation='Sum' name='[sum:X9 (base_boletins_tcc.csv):qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
-          <aggregation value='false' />
+          <filter class='categorical' column='[federated.07z0t971dztbyx191md251dtq31w].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X1 (base_boletins_tcc.csv):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X10 (base_boletins_tcc.csv):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X11 (base_boletins_tcc.csv):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X12 (base_boletins_tcc.csv):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X13 (base_boletins_tcc.csv):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X14 (base_boletins_tcc.csv):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X15 (base_boletins_tcc.csv):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X16 (base_boletins_tcc.csv):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X17 (base_boletins_tcc.csv):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X2 (base_boletins_tcc.csv):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X3 (base_boletins_tcc.csv):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X4 (base_boletins_tcc.csv):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X5 (base_boletins_tcc.csv):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X6 (base_boletins_tcc.csv):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X7 (base_boletins_tcc.csv):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X8 (base_boletins_tcc.csv):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X9 (base_boletins_tcc.csv):qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.07z0t971dztbyx191md251dtq31w].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X4 (base_boletins_tcc.csv):qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X11 (base_boletins_tcc.csv):qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X16 (base_boletins_tcc.csv):qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X13 (base_boletins_tcc.csv):qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X3 (base_boletins_tcc.csv):qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X10 (base_boletins_tcc.csv):qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X15 (base_boletins_tcc.csv):qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X2 (base_boletins_tcc.csv):qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X9 (base_boletins_tcc.csv):qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X1 (base_boletins_tcc.csv):qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X17 (base_boletins_tcc.csv):qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X6 (base_boletins_tcc.csv):qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X8 (base_boletins_tcc.csv):qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X5 (base_boletins_tcc.csv):qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X14 (base_boletins_tcc.csv):qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X12 (base_boletins_tcc.csv):qk]&quot;</bucket>
+              <bucket>&quot;[federated.07z0t971dztbyx191md251dtq31w].[sum:X7 (base_boletins_tcc.csv):qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <slices>
+            <column>[federated.07z0t971dztbyx191md251dtq31w].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
         </view>
         <style />
         <panes>
@@ -1582,220 +1601,20 @@
             <view>
               <breakdown value='auto' />
             </view>
-            <mark class='Circle' />
-            <reference-line axis-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X1 (base_boletins_tcc.csv):qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline0' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X1 (base_boletins_tcc.csv):qk]' z-order='1' />
-            <reference-line axis-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X10 (base_boletins_tcc.csv):qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline1' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X10 (base_boletins_tcc.csv):qk]' z-order='2' />
-            <reference-line axis-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X3 (base_boletins_tcc.csv):qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline10' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X3 (base_boletins_tcc.csv):qk]' z-order='11' />
-            <reference-line axis-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X4 (base_boletins_tcc.csv):qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline11' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X4 (base_boletins_tcc.csv):qk]' z-order='12' />
-            <reference-line axis-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X5 (base_boletins_tcc.csv):qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline12' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X5 (base_boletins_tcc.csv):qk]' z-order='13' />
-            <reference-line axis-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X6 (base_boletins_tcc.csv):qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline13' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X6 (base_boletins_tcc.csv):qk]' z-order='14' />
-            <reference-line axis-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X7 (base_boletins_tcc.csv):qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline14' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X7 (base_boletins_tcc.csv):qk]' z-order='15' />
-            <reference-line axis-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X8 (base_boletins_tcc.csv):qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline15' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X8 (base_boletins_tcc.csv):qk]' z-order='16' />
-            <reference-line axis-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X9 (base_boletins_tcc.csv):qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline16' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X9 (base_boletins_tcc.csv):qk]' z-order='17' />
-            <reference-line axis-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X11 (base_boletins_tcc.csv):qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline2' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X11 (base_boletins_tcc.csv):qk]' z-order='3' />
-            <reference-line axis-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X12 (base_boletins_tcc.csv):qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline3' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X12 (base_boletins_tcc.csv):qk]' z-order='4' />
-            <reference-line axis-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X13 (base_boletins_tcc.csv):qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline4' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X13 (base_boletins_tcc.csv):qk]' z-order='5' />
-            <reference-line axis-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X14 (base_boletins_tcc.csv):qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline5' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X14 (base_boletins_tcc.csv):qk]' z-order='6' />
-            <reference-line axis-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X15 (base_boletins_tcc.csv):qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline6' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X15 (base_boletins_tcc.csv):qk]' z-order='7' />
-            <reference-line axis-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X16 (base_boletins_tcc.csv):qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline7' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X16 (base_boletins_tcc.csv):qk]' z-order='8' />
-            <reference-line axis-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X17 (base_boletins_tcc.csv):qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline8' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X17 (base_boletins_tcc.csv):qk]' z-order='9' />
-            <reference-line axis-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X2 (base_boletins_tcc.csv):qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline9' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.07z0t971dztbyx191md251dtq31w].[sum:X2 (base_boletins_tcc.csv):qk]' z-order='10' />
+            <mark class='Automatic' />
+            <encodings>
+              <lod column='[federated.07z0t971dztbyx191md251dtq31w].[:Measure Names]' />
+              <text column='[federated.07z0t971dztbyx191md251dtq31w].[Multiple Values]' />
+            </encodings>
             <style>
               <style-rule element='mark'>
-                <format attr='size' value='0.25' />
-              </style-rule>
-            </style>
-          </pane>
-          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.07z0t971dztbyx191md251dtq31w].[sum:X1 (base_boletins_tcc.csv):qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Circle' />
-            <style>
-              <style-rule element='mark'>
-                <format attr='size' value='0.25' />
-              </style-rule>
-            </style>
-          </pane>
-          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.07z0t971dztbyx191md251dtq31w].[sum:X10 (base_boletins_tcc.csv):qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Circle' />
-            <style>
-              <style-rule element='mark'>
-                <format attr='size' value='0.25' />
-              </style-rule>
-            </style>
-          </pane>
-          <pane id='3' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.07z0t971dztbyx191md251dtq31w].[sum:X11 (base_boletins_tcc.csv):qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Circle' />
-            <style>
-              <style-rule element='mark'>
-                <format attr='size' value='0.25' />
-              </style-rule>
-            </style>
-          </pane>
-          <pane id='4' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.07z0t971dztbyx191md251dtq31w].[sum:X12 (base_boletins_tcc.csv):qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Circle' />
-            <style>
-              <style-rule element='mark'>
-                <format attr='size' value='0.25' />
-              </style-rule>
-            </style>
-          </pane>
-          <pane id='5' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.07z0t971dztbyx191md251dtq31w].[sum:X13 (base_boletins_tcc.csv):qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Circle' />
-            <style>
-              <style-rule element='mark'>
-                <format attr='size' value='0.25' />
-              </style-rule>
-            </style>
-          </pane>
-          <pane id='6' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.07z0t971dztbyx191md251dtq31w].[sum:X14 (base_boletins_tcc.csv):qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Circle' />
-            <style>
-              <style-rule element='mark'>
-                <format attr='size' value='0.25' />
-              </style-rule>
-            </style>
-          </pane>
-          <pane id='7' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.07z0t971dztbyx191md251dtq31w].[sum:X15 (base_boletins_tcc.csv):qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Circle' />
-            <style>
-              <style-rule element='mark'>
-                <format attr='size' value='0.25' />
-              </style-rule>
-            </style>
-          </pane>
-          <pane id='8' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.07z0t971dztbyx191md251dtq31w].[sum:X16 (base_boletins_tcc.csv):qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Circle' />
-            <style>
-              <style-rule element='mark'>
-                <format attr='size' value='0.25' />
-              </style-rule>
-            </style>
-          </pane>
-          <pane id='9' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.07z0t971dztbyx191md251dtq31w].[sum:X17 (base_boletins_tcc.csv):qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Circle' />
-            <style>
-              <style-rule element='mark'>
-                <format attr='size' value='0.25' />
-              </style-rule>
-            </style>
-          </pane>
-          <pane id='10' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.07z0t971dztbyx191md251dtq31w].[sum:X2 (base_boletins_tcc.csv):qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Circle' />
-            <style>
-              <style-rule element='mark'>
-                <format attr='size' value='0.25' />
-              </style-rule>
-            </style>
-          </pane>
-          <pane id='11' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.07z0t971dztbyx191md251dtq31w].[sum:X3 (base_boletins_tcc.csv):qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Circle' />
-            <style>
-              <style-rule element='mark'>
-                <format attr='size' value='0.25' />
-              </style-rule>
-            </style>
-          </pane>
-          <pane id='12' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.07z0t971dztbyx191md251dtq31w].[sum:X4 (base_boletins_tcc.csv):qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Circle' />
-            <style>
-              <style-rule element='mark'>
-                <format attr='size' value='0.25' />
-              </style-rule>
-            </style>
-          </pane>
-          <pane id='13' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.07z0t971dztbyx191md251dtq31w].[sum:X5 (base_boletins_tcc.csv):qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Circle' />
-            <style>
-              <style-rule element='mark'>
-                <format attr='size' value='0.25' />
-              </style-rule>
-            </style>
-          </pane>
-          <pane id='14' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.07z0t971dztbyx191md251dtq31w].[sum:X6 (base_boletins_tcc.csv):qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Circle' />
-            <style>
-              <style-rule element='mark'>
-                <format attr='size' value='0.25' />
-              </style-rule>
-            </style>
-          </pane>
-          <pane id='15' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.07z0t971dztbyx191md251dtq31w].[sum:X7 (base_boletins_tcc.csv):qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Circle' />
-            <style>
-              <style-rule element='mark'>
-                <format attr='size' value='0.25' />
-              </style-rule>
-            </style>
-          </pane>
-          <pane id='16' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.07z0t971dztbyx191md251dtq31w].[sum:X8 (base_boletins_tcc.csv):qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Circle' />
-            <style>
-              <style-rule element='mark'>
-                <format attr='size' value='0.25' />
-              </style-rule>
-            </style>
-          </pane>
-          <pane id='17' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.07z0t971dztbyx191md251dtq31w].[sum:X9 (base_boletins_tcc.csv):qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Circle' />
-            <style>
-              <style-rule element='mark'>
-                <format attr='size' value='0.25' />
+                <format attr='mark-labels-show' value='true' />
               </style-rule>
             </style>
           </pane>
         </panes>
-        <rows>([federated.07z0t971dztbyx191md251dtq31w].[sum:X1 (base_boletins_tcc.csv):qk] + ([federated.07z0t971dztbyx191md251dtq31w].[sum:X10 (base_boletins_tcc.csv):qk] + ([federated.07z0t971dztbyx191md251dtq31w].[sum:X11 (base_boletins_tcc.csv):qk] + ([federated.07z0t971dztbyx191md251dtq31w].[sum:X12 (base_boletins_tcc.csv):qk] + ([federated.07z0t971dztbyx191md251dtq31w].[sum:X13 (base_boletins_tcc.csv):qk] + ([federated.07z0t971dztbyx191md251dtq31w].[sum:X14 (base_boletins_tcc.csv):qk] + ([federated.07z0t971dztbyx191md251dtq31w].[sum:X15 (base_boletins_tcc.csv):qk] + ([federated.07z0t971dztbyx191md251dtq31w].[sum:X16 (base_boletins_tcc.csv):qk] + ([federated.07z0t971dztbyx191md251dtq31w].[sum:X17 (base_boletins_tcc.csv):qk] + ([federated.07z0t971dztbyx191md251dtq31w].[sum:X2 (base_boletins_tcc.csv):qk] + ([federated.07z0t971dztbyx191md251dtq31w].[sum:X3 (base_boletins_tcc.csv):qk] + ([federated.07z0t971dztbyx191md251dtq31w].[sum:X4 (base_boletins_tcc.csv):qk] + ([federated.07z0t971dztbyx191md251dtq31w].[sum:X5 (base_boletins_tcc.csv):qk] + ([federated.07z0t971dztbyx191md251dtq31w].[sum:X6 (base_boletins_tcc.csv):qk] + ([federated.07z0t971dztbyx191md251dtq31w].[sum:X7 (base_boletins_tcc.csv):qk] + ([federated.07z0t971dztbyx191md251dtq31w].[sum:X8 (base_boletins_tcc.csv):qk] + [federated.07z0t971dztbyx191md251dtq31w].[sum:X9 (base_boletins_tcc.csv):qk]))))))))))))))))</rows>
-        <cols />
+        <rows>[federated.07z0t971dztbyx191md251dtq31w].[:Measure Names]</rows>
+        <cols>[federated.07z0t971dztbyx191md251dtq31w].[Multiple Values]</cols>
       </table>
       <simple-id uuid='{43722435-5FF4-4D1F-A629-3B5EBEA7D298}' />
     </worksheet>
@@ -2151,6 +1970,7 @@
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
+            <card type='measures' />
           </strip>
         </edge>
         <edge name='top'>

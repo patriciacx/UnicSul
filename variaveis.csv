@@ -12,5 +12,6 @@
 "X11";"ROUBO A BANCO"
 "X12";"ROUBO DE CARGA"
 "X13";"ROUBO DE VEÍCULO"
-"X14";"homicidio_por_ac_transito"
-"X15";"HomicidioDoloso"
+"X14";"TENTATIVA DE HOMICÍDIO"
+"X15";"homicidio_por_ac_transito"
+"X16";"HomicidioDoloso"

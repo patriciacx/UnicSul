@@ -38,8 +38,8 @@ glimpse(dados.join)
 
 dim(dados.join)
 
-head(dados.join[,22:24])
-dados.join[,22:24] <- NULL
+head(dados.join[,23:24])
+dados.join[,23:24] <- NULL
 
 ## RETIRANDO AS VARIÁVEIS DE NUMERO DE VÍTIMAS
 dim(dados.join)
@@ -74,11 +74,11 @@ dados.join$`LESÃO CORPORAL SEGUIDA DE MORTE` <- NULL
 
 #RENOMEANDO AS VARIAVEIS
 
-variaveis <- cbind(paste('X',1:15, sep =''),
-             colnames(dados.join)[3:17])
+variaveis <- cbind(paste('X',1:16, sep =''),
+             colnames(dados.join)[3:18])
 variaveis
 
-colnames(dados.join)[3:17] <- paste('X',1:17, sep ='')
+colnames(dados.join)[3:18] <- paste('X',1:18, sep ='')
 
 
 
