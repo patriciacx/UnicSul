@@ -3,6 +3,7 @@
 <!-- build 20191.19.0417.1429                               -->
 <workbook source-build='2019.1.3 (20191.19.0417.1429)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
   <document-format-change-manifest>
+    <AutoCreateAndUpdateDSDPhoneLayouts />
     <SheetIdentifierTracking />
     <WindowsPersistSimpleIdentifiers />
   </document-format-change-manifest>
@@ -363,9 +364,37 @@
       <column-instance column='[RC3]' derivation='Sum' name='[sum:RC3:qk]' pivot='key' type='quantitative' />
       <column-instance column='[RC4]' derivation='Sum' name='[sum:RC4:qk]' pivot='key' type='quantitative' />
       <column-instance column='[RC5]' derivation='Sum' name='[sum:RC5:qk]' pivot='key' type='quantitative' />
+      <group caption='Action (Delegacia,Grupos.Ward)' hidden='true' name='[Action (Delegacia,Grupos.Ward)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[delegacia]' />
+          <groupfilter function='level-members' level='[grupos.ward]' />
+        </groupfilter>
+      </group>
+      <group caption='Action (Grupos.Ward)' hidden='true' name='[Action (Grupos.Ward)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[grupos.ward]' />
+        </groupfilter>
+      </group>
       <layout dim-ordering='alphabetic' dim-percentage='0.43361' measure-ordering='alphabetic' measure-percentage='0.56639' show-structure='true' />
       <style>
         <style-rule element='mark'>
+          <encoding attr='color' field='[none:grupos.ward:ok]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>1</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>5</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>4</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>3</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>2</bucket>
+            </map>
+          </encoding>
           <encoding attr='shape' field='[none:grupos.ward:ok]' palette=':filled' type='shape'>
             <map to=':filled/asterisk'>
               <bucket>5</bucket>
@@ -450,6 +479,24 @@
       </mapsource-defaults>
     </mapsource>
   </mapsources>
+  <actions>
+    <action caption='Filter 2 (generated)' name='[Action1]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Dashboard 1' type='sheet' worksheet='Sheet 3' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Dashboard 1' />
+      </command>
+    </action>
+    <action caption='Filter 1 (generated)' name='[Action2]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Dashboard 1' type='sheet' worksheet='Mapa' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Dashboard 1' />
+      </command>
+    </action>
+  </actions>
   <worksheets>
     <worksheet name='Cluster VS RC'>
       <table>
@@ -480,20 +527,27 @@
               <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07z0t971dztbyx191md251dtq31w].[avg:RC5:qk]&quot;' />
             </groupfilter>
           </filter>
+          <filter class='categorical' column='[federated.07z0t971dztbyx191md251dtq31w].[Action (Grupos.Ward)]'>
+            <groupfilter function='level-members' level='[grupos.ward]' user:ui-action-filter='[Action1]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
           <slices>
             <column>[federated.07z0t971dztbyx191md251dtq31w].[:Measure Names]</column>
+            <column>[federated.07z0t971dztbyx191md251dtq31w].[Action (Grupos.Ward)]</column>
           </slices>
           <aggregation value='false' />
         </view>
         <style>
-          <style-rule element='cell'>
-            <format attr='height' field='[federated.07z0t971dztbyx191md251dtq31w].[:Measure Names]' value='25' />
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.07z0t971dztbyx191md251dtq31w].[Multiple Values]' field-type='quantitative' max='4.0' min='-4.0' range-type='fixed' scope='cols' type='space' />
           </style-rule>
           <style-rule element='gridline'>
             <format attr='line-visibility' scope='cols' value='off' />
           </style-rule>
           <style-rule element='zeroline'>
-            <format attr='stroke-size' scope='cols' value='2' />
+            <format attr='stroke-size' scope='cols' value='1' />
+            <format attr='line-visibility' scope='cols' value='on' />
+            <format attr='line-pattern-only' scope='cols' value='solid' />
+            <format attr='stroke-color' scope='cols' value='#555555' />
           </style-rule>
         </style>
         <panes>
@@ -509,11 +563,8 @@
             <reference-line axis-column='[federated.07z0t971dztbyx191md251dtq31w].[Multiple Values]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline0' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.07z0t971dztbyx191md251dtq31w].[Multiple Values]' z-order='1' />
             <style>
               <style-rule element='mark'>
-                <format attr='size' value='0.71364641189575195' />
-              </style-rule>
-              <style-rule element='pane'>
-                <format attr='minheight' value='-1' />
-                <format attr='maxheight' value='-1' />
+                <format attr='size' value='0.47176796197891235' />
+                <format attr='mark-transparency' value='255' />
               </style-rule>
             </style>
           </pane>
@@ -542,9 +593,19 @@
             <column-instance column='[delegacia]' derivation='None' name='[none:delegacia:nk]' pivot='key' type='nominal' />
             <column-instance column='[grupos.ward]' derivation='None' name='[none:grupos.ward:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.07z0t971dztbyx191md251dtq31w].[Action (Grupos.Ward)]'>
+            <groupfilter function='level-members' level='[grupos.ward]' user:ui-action-filter='[Action1]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.07z0t971dztbyx191md251dtq31w].[Action (Grupos.Ward)]</column>
+          </slices>
           <aggregation value='true' />
         </view>
         <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.07z0t971dztbyx191md251dtq31w].[avg:Longitude:qk]' field-type='quantitative' max='-5156923.349856697' min='-5217741.3082590457' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.07z0t971dztbyx191md251dtq31w].[avg:Latitude:qk]' field-type='quantitative' max='-2677674.2651164755' min='-2735407.2553498708' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
           <style-rule element='worksheet'>
             <format attr='in-tooltip' field='[federated.07z0t971dztbyx191md251dtq31w].[avg:Longitude:qk]' value='false' />
             <format attr='in-tooltip' field='[federated.07z0t971dztbyx191md251dtq31w].[avg:Latitude:qk]' value='false' />
@@ -588,7 +649,123 @@
       </table>
       <simple-id uuid='{B4E5454A-F015-4728-AC29-26AFD774EBE3}' />
     </worksheet>
+    <worksheet name='Sheet 3'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='LocDPS' name='federated.07z0t971dztbyx191md251dtq31w' />
+          </datasources>
+          <datasource-dependencies datasource='federated.07z0t971dztbyx191md251dtq31w'>
+            <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+              <calculation class='tableau' formula='1' />
+            </column>
+            <column aggregation='Sum' caption='Grupos.Ward' datatype='integer' name='[grupos.ward]' role='dimension' type='ordinal' />
+            <column-instance column='[grupos.ward]' derivation='None' name='[none:grupos.ward:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' value='84' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward:ok]' value='164' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Shape' />
+            <encodings>
+              <color column='[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward:ok]' />
+              <shape column='[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward:ok]' />
+              <text column='[federated.07z0t971dztbyx191md251dtq31w].[sum:Number of Records:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward:ok]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{95F831E0-18F2-4890-BF64-B9A11FBA82B2}' />
+    </worksheet>
   </worksheets>
+  <dashboards>
+    <dashboard name='Dashboard 1'>
+      <style />
+      <size sizing-mode='automatic' />
+      <zones>
+        <zone h='100000' id='4' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='97298' id='7' param='horz' type='layout-flow' w='98594' x='703' y='1351'>
+            <zone h='97298' id='5' type='layout-basic' w='98594' x='703' y='1351'>
+              <zone h='97298' id='3' name='Mapa' w='49297' x='703' y='1351'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='48649' id='10' name='Cluster VS RC' w='49297' x='50000' y='1351'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone fixed-size='160' h='48649' id='6' is-fixed='true' param='vert' type='layout-flow' w='49297' x='50000' y='50000'>
+                <zone h='48648' id='11' name='Sheet 3' show-title='false' w='49297' x='50000' y='50000'>
+                  <layout-cache cell-count-h='5' non-cell-size-h='20' type-h='cell' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='1' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='2' param='vert' type='layout-flow' w='84000' x='8000' y='8000' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{6AC9C285-F1E3-42BA-A3B6-AC55F0A374EF}' />
+    </dashboard>
+  </dashboards>
   <windows source-height='30'>
     <window class='worksheet' name='Mapa'>
       <cards>
@@ -619,7 +796,7 @@
       </cards>
       <simple-id uuid='{10F8BE72-5DD4-4856-88DC-44A7A850307F}' />
     </window>
-    <window class='worksheet' maximized='true' name='Cluster VS RC'>
+    <window class='worksheet' name='Cluster VS RC'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -647,6 +824,50 @@
         </edge>
       </cards>
       <simple-id uuid='{15CA4328-B404-4F52-AC6A-DCC6E44FD3F3}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Cluster VS RC'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Mapa'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Sheet 3'>
+          <zoom type='fit-height' />
+        </viewpoint>
+      </viewpoints>
+      <active id='11' />
+      <simple-id uuid='{F7ED4CD7-9CFF-4547-A383-B8B25CD9502F}' />
+    </window>
+    <window class='worksheet' name='Sheet 3'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward:ok]' type='color' />
+            <card pane-specification-id='0' param='[federated.07z0t971dztbyx191md251dtq31w].[none:grupos.ward:ok]' type='shape' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{D91B18A0-009F-4CC8-BC29-A69D5BAF7926}' />
     </window>
   </windows>
 </workbook>

@@ -5,7 +5,7 @@
     "dirty" : false,
     "encoding" : "ISO8859-1",
     "folds" : "",
-    "hash" : "1508784215",
+    "hash" : "0",
     "id" : "B43CC24C",
     "lastKnownWriteTime" : 1566556742,
     "last_content_update" : 1566556742494,
@@ -13,9 +13,9 @@
     "project_path" : "4_criacao_cluster.Rmd",
     "properties" : {
         "chunk_output_type" : "inline",
-        "cursorPosition" : "75,20",
+        "cursorPosition" : "174,0",
         "last_setup_crc32" : "F5F06B350c5cf9",
-        "scrollLine" : "71",
+        "scrollLine" : "0",
         "tempName" : "Untitled1"
     },
     "relative_order" : 5,
