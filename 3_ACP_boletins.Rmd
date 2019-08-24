@@ -16,7 +16,6 @@ library(knitr)
 
 Lendo Arquivo:
 ```{r}
-setwd('C:/Users/Patricia/Google Drive/Cruzeiro/POS - TCC')
 dados <- read.csv2('base_boletins_tcc.csv', sep=';')
 
 glimpse(dados)
@@ -59,7 +58,7 @@ Seguindo a Análise com 6 componentes:
 
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 
-fit2 <- principal(dados.scale, covar = FALSE, nfactors = 6) 
+fit2 <- principal(dados.scale, covar = FALSE, nfactors = 5) 
  
 fit2
 
@@ -69,52 +68,54 @@ fit2
 ```{r}
 corrplot(t(fit2$loadings))
 ```
-
 Relações:
 
 RC1:
 <br>**X1** - Estupro 
 <br>**X2** - Estupro de Vulnerável
 <br>**X6** - HOMICÍDIO CULPOSO POR ACIDENTE DE TRÂNSITO
-<br>**X7** - HOMICÍDIO DOLOSO
-<br>**X11** - LESÃO CORPORAL CULPOSA POR ACIDENTE DE TRÂ
-<br>**X12** - LESÃO CORPORAL DOLOSA
-<br>**X14** - LESÃO CORPORAL SEGUIDA DE MORTE
-<br>**x19** - ROUBO DE CARGA
-<br>**x20** - ROUBO DE VEÍCULO
-<br>**x21** - TENTATIVA DE HOMICÍDIO
-
-
-RC3:
-<br>**X4** - FURTO DE VEÍCULO
-<br>**X10** - LESÃO CORPORAL CULPOSA - OUTRAS
-<br>**X11** - LESÃO CORPORAL CULPOSA POR ACIDENTE DE TRÂ (NOVAMENTE)
-<br>**X18** - ROUBO A BANCO
-
+<br>**X11** - LESÃO CORPORAL DOLOSA
+<br>**x15** - ROUBO DE CARGA
+<br>**x17** - Homicidio doloso exceto transito
 
 RC4:
-<br>**X9** - LATROCÍNIO
-<br>**X16** - Nº DE VÍTIMAS EM LATROCÍNIO
-
+<br>**X3** - FURTO OUTROS *NEGATIVO*
+<br>**X4** - FURTO DE VEÍCULO
+<br>**10** - LESÃO CORPORAL CULPOSA POR ACIDENTE DE TRÂNSITO
 
 RC2:
-<br>**X8** - HOMICÍDIO DOLOSO POR ACIDENTE DE TRÂNSITO
-<br>**X15** - Nº DE VÍTIMAS EM HOMICÍDIO DOLOSO POR ACIDENTE DE TRANSITO
+<br>**X9** - LESÃO CORPORAL CULPOSA - OUTRAS
+<br>**X14**- ROUBO A BANCO
+<br>**X16**- ROUBO DE VEÍCULO *NEGATIVO*
 
-RC6:
-<br>**X05** - HOMICIDIO CULPOSO OUTROS
-<br>**X13** - LESÃO CORPORAL SEGUIDA DE MORTE
+RC3:
+<br>**X5** - HOMICÍDIO CULPOSO OUTROS
+<br>**X12** - LESÃO CORPORAL SEGUIDA DE MORTE
 
-RC5
-<br>**X03** - FURTO - OUTROS
-<br>**X03** - ROUBO OUTROS
-
-
-
+RC5:
+<br>**X7** - HOMICÍDIO DOLOSO POR ACIDENTE DE TRÂNSITO
+<br>**X13** - ROUBO - OUTROS
 
 
 
+# Gravando o arquivo para o próximo passo
 
+```{r}
+
+base_acp_scores <- 
+  cbind( dados[,1:2], 
+         fit2$scores)
+
+head(base_acp_scores)
+
+```
+
+
+```{r}
+
+write.csv2(base_acp_scores, 'base_acp_scores.csv',row.names=FALSE)
+
+```
 
 
 

@@ -1,0 +1,122 @@
+---
+title: "ACP Boletins"
+author: "Patricia Felipe e Leandro"
+date: "11 de junho de 2019"
+output: html_document
+---
+
+Carregando Pacotes:
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(corrplot)
+library(psych)
+library(knitr)
+
+```
+
+Lendo Arquivo:
+```{r}
+dados <- read.csv2('base_boletins_tcc.csv', sep=';')
+
+glimpse(dados)
+```
+
+Escalonamento:
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+dados.scale <- scale(dados[,-c(1:2)]) %>% as.data.frame()
+
+```
+
+
+Teste de esfericidade
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+bartlett.test(dados)
+bartlett.test(dados.scale)
+```
+
+Correlações 
+
+```{r}
+#cor(dados.scale)
+corrplot(cor(dados.scale), type="upper")
+```
+
+
+```{r}
+# Ajuste do modelo - escolha do numero de componentes 
+fit1 <- princomp(dados.scale, cor=TRUE) 
+summary(fit1)
+```
+
+```{r}
+# Scree Plot 
+plot(fit1, type="lines")
+```
+
+
+Seguindo a Análise com 6 componentes:
+
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+
+fit2 <- principal(dados.scale, covar = FALSE, nfactors = 5) 
+ 
+fit2
+
+```
+
+
+```{r}
+corrplot(t(fit2$loadings))
+```
+Relações:
+
+RC1:
+<br>**X1** - Estupro 
+<br>**X2** - Estupro de Vulnerável
+<br>**X6** - HOMICÍDIO CULPOSO POR ACIDENTE DE TRÂNSITO
+<br>**X11** - LESÃO CORPORAL DOLOSA
+<br>**x15** - ROUBO DE CARGA
+<br>**x17** - Homicidio doloso exceto transito
+
+RC4:
+<br>**X3** - FURTO OUTROS *NEGATIVO*
+<br>**X4** - FURTO DE VEÍCULO
+<br>**10** - LESÃO CORPORAL CULPOSA POR ACIDENTE DE TRÂNSITO
+
+RC2:
+<br>**X9** - LESÃO CORPORAL CULPOSA - OUTRAS
+<br>**X14**- ROUBO A BANCO
+<br>**X16**- ROUBO DE VEÍCULO *NEGATIVO*
+
+RC3:
+<br>**X5** - HOMICÍDIO CULPOSO OUTROS
+<br>**X12** - LESÃO CORPORAL SEGUIDA DE MORTE
+
+RC5:
+<br>**X7** - HOMICÍDIO DOLOSO POR ACIDENTE DE TRÂNSITO
+<br>**X13** - ROUBO - OUTROS
+
+
+
+# Gravando o arquivo para o próximo passo
+
+```{r}
+
+base_acp_scores <- 
+  cbind( dados[,1:2], 
+         fit2$scores)
+
+head(base_acp_scores)
+
+```
+
+
+```{r}
+
+write.csv2(base_acp_scores, 'base_acp_scores.csv',row.names=FALSE)
+
+```
+
+
+
+

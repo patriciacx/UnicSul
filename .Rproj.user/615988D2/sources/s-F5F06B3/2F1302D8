@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1566069839793.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "2F1302D8",
+    "lastKnownWriteTime" : 32651513914720368,
+    "last_content_update" : 1566069839793,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "60665E4E",
+        "caption" : "table.ward",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=table.ward&cache_key=60665E4E",
+        "displayedObservations" : 6,
+        "environment" : "",
+        "object" : "table.ward",
+        "preview" : 0,
+        "totalObservations" : 6,
+        "variables" : 2
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
