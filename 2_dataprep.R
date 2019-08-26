@@ -77,17 +77,19 @@ dados.join$`ROUBO A BANCO` <-NULL
 
 #RENOMEANDO AS VARIAVEIS
 
-variaveis <- cbind(paste('X',1:15, sep =''),
+variaveis <- cbind(paste('X',
+                        str_pad(string = as.character(1:15),width = 2,pad = '0'), 
+                        sep =''),
              colnames(dados.join)[3:17])
 variaveis
 
-colnames(dados.join)[3:17] <- paste('X',1:17, sep ='')
+colnames(dados.join)[3:17] <- paste('X',
+                                    str_pad(string = as.character(1:15),width = 2,pad = '0'), 
+                                     sep ='')
 
 
 
 ### CONSIDERANDO SOMENTE AS DELECAGIAS REGIONAIS
-
-substr(x, start=n1, stop=n2)
 
 
 

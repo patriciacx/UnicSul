@@ -6,34 +6,27 @@ output: html_document
 ---
 
 Carregando Pacotes:
-```{r message=FALSE, warning=FALSE}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(corrplot)
 library(psych)
 library(knitr)
 library(GGally)
+library(grid)
+library(gridExtra)
 
 ```
 
 Lendo Arquivo:
-```{r}
+```{r  echo=FALSE}
 dados <- read.csv2('base_boletins_tcc.csv', sep=';')
 
 glimpse(dados)
-dados$X11 <- NULL
 
 ```
 
 
-```{r}
-
-summary(dados[,-(1:2)])
-
-```
-
-
-
-```{r}
+```{r message=FALSE, warning=FALSE, include=FALSE}
 dados.pivot <- gather(dados[,-(1:2)], "var", "Valor")
 glimpse(dados.pivot)
 ```
@@ -43,23 +36,37 @@ variaveis <- read.csv2('variaveis.csv') %>% as.data.frame
 print(variaveis)
 ```
 
-
 ```{r}
+#summary(dados[,-(1:2)])
+resumo <- data.frame(
+    'Mínimo' = tapply(dados.pivot$Valor, dados.pivot$var, min),
+    'Máximo' = tapply(dados.pivot$Valor, dados.pivot$var, max),
+    'Média' = tapply(dados.pivot$Valor, dados.pivot$var, mean),
+    'Mediana' = tapply(dados.pivot$Valor, dados.pivot$var, median),
+    'Desvio Padrão' = tapply(dados.pivot$Valor, dados.pivot$var, sd)
+)
+
+resumo
+```
+
+
+
+```{r echo=FALSE}
 par(mfrow=c(2,4))
 
-hist(dados.pivot[dados.pivot$var=='X1',2], main = 'X1', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X2',2], main = 'X2', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X3',2], main = 'X3', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X4',2], main = 'X4', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X5',2], main = 'X5', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X6',2], main = 'X6', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X7',2], main = 'X7', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X8',2], main = 'X8', ylab='Frequência', xlab='')
+hist(dados.pivot[dados.pivot$var=='X01',2], main = 'X1', ylab='Frequência', xlab='')
+hist(dados.pivot[dados.pivot$var=='X02',2], main = 'X2', ylab='Frequência', xlab='')
+hist(dados.pivot[dados.pivot$var=='X03',2], main = 'X3', ylab='Frequência', xlab='')
+hist(dados.pivot[dados.pivot$var=='X04',2], main = 'X4', ylab='Frequência', xlab='')
+hist(dados.pivot[dados.pivot$var=='X05',2], main = 'X5', ylab='Frequência', xlab='')
+hist(dados.pivot[dados.pivot$var=='X06',2], main = 'X6', ylab='Frequência', xlab='')
+hist(dados.pivot[dados.pivot$var=='X07',2], main = 'X7', ylab='Frequência', xlab='')
+hist(dados.pivot[dados.pivot$var=='X08',2], main = 'X8', ylab='Frequência', xlab='')
 
 
-hist(dados.pivot[dados.pivot$var=='X9',2], main = 'X9', ylab='Frequência', xlab='')
+hist(dados.pivot[dados.pivot$var=='X09',2], main = 'X9', ylab='Frequência', xlab='')
 hist(dados.pivot[dados.pivot$var=='X10',2], main = 'X10', ylab='Frequência', xlab='')
-#hist(dados.pivot[dados.pivot$var=='X11',2], main = 'X11')
+hist(dados.pivot[dados.pivot$var=='X11',2], main = 'X11', ylab='Frequência', xlab='')
 hist(dados.pivot[dados.pivot$var=='X12',2], main = 'X12', ylab='Frequência', xlab='')
 hist(dados.pivot[dados.pivot$var=='X13',2], main = 'X13', ylab='Frequência', xlab='')
 hist(dados.pivot[dados.pivot$var=='X14',2], main = 'X14', ylab='Frequência', xlab='')
