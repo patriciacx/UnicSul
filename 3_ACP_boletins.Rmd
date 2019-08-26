@@ -19,8 +19,8 @@ Lendo Arquivo:
 dados <- read.csv2('base_boletins_tcc.csv', sep=';')
 
 glimpse(dados)
-dados$X11 <- NULL
-dados$X1 <- NULL
+#dados$X11 <- NULL
+#dados$X1 <- NULL
 ```
 
 Escalonamento:
@@ -40,7 +40,9 @@ Correlações
 
 ```{r}
 #cor(dados.scale)
-corrplot(cor(dados.scale), type="upper")
+corrplot.mixed(cor(dados.scale), number.cex=0.7,, lower.col = "black")
+
+#corrplot(cor(dados.scale), order = "hclust", hclust.method = "ward.D2", addrect = 4)
 ```
 
 

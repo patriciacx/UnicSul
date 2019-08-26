@@ -71,14 +71,17 @@ dados.join$HomicidioDoloso <-
 dados.join$HomicidioDolosoExcetoTransito <- NULL
 dados.join$`LESÃO CORPORAL SEGUIDA DE MORTE` <- NULL
 
+#tirando roubo a banco
+
+dados.join$`ROUBO A BANCO` <-NULL
 
 #RENOMEANDO AS VARIAVEIS
 
-variaveis <- cbind(paste('X',1:16, sep =''),
-             colnames(dados.join)[3:18])
+variaveis <- cbind(paste('X',1:15, sep =''),
+             colnames(dados.join)[3:17])
 variaveis
 
-colnames(dados.join)[3:18] <- paste('X',1:18, sep ='')
+colnames(dados.join)[3:17] <- paste('X',1:17, sep ='')
 
 
 
