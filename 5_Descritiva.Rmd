@@ -11,6 +11,7 @@ library(tidyverse)
 library(corrplot)
 library(psych)
 library(knitr)
+library(GGally)
 
 ```
 
@@ -20,3 +21,12 @@ dados <- read.csv2('base_boletins_tcc.csv', sep=';')
 
 glimpse(dados)
 dados$X11 <- NULL
+
+```
+
+
+```{r}
+
+ggpairs(dados)
+
+```
