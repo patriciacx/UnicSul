@@ -6,7 +6,7 @@ output: html_document
 ---
 
 Carregando Pacotes:
-```{r message=FALSE, warning=FALSE}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(corrplot)
 library(psych)
@@ -22,12 +22,10 @@ library(GPArotation)
 ```
 
 Lendo Arquivo:
-```{r}
+```{r echo=FALSE}
 dados <- read.csv2('base_boletins_tcc.csv', sep=';')
 
-glimpse(dados)
-#dados$X11 <- NULL
-#dados$X1 <- NULL
+#glimpse(dados)
 ```
 
 Escalonamento:
@@ -38,16 +36,21 @@ dados.scale <- scale(dados[,-c(1:2)]) %>% as.data.frame()
 
 
 Teste de esfericidade
-```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 bartlett.test(dados)
 bartlett.test(dados.scale)
 ```
 
 Correlações 
 
-```{r}
+```{r echo=FALSE}
 #cor(dados.scale)
-corrplot.mixed(cor(dados.scale), number.cex=0.7,, lower.col = "black")
+corrplot.mixed(
+    cor(dados.scale), 
+    number.cex=0.7,
+    lower.col = "black", 
+    tl.col="black",
+    tl.cex=0.75)
 
 #corrplot(cor(dados.scale), order = "hclust", hclust.method = "ward.D2", addrect = 4)
 ```
@@ -59,13 +62,15 @@ fit1 <- princomp(dados.scale, cor=TRUE)
 summary(fit1)
 ```
 
+Gráfico ScreePlot
+
 ```{r}
 # Scree Plot 
 plot(fit1, type="lines")
 ```
 
 
-Seguindo a Análise com 6 componentes:
+Seguindo a Análise com 6 componentes e sem rotação:
 
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 
@@ -76,30 +81,32 @@ fit_sem_rotacao
 
 ```
 
+Análise de Componentes Principais com rotação Obliqua:
 
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 
-
 fit_oblimin     <- principal(dados.scale, covar = FALSE, nfactors = 4, rotate='oblimin') 
  
-#fit_sem_rotacao
 fit_oblimin
 
 ```
 
+Comparando Cargas Componentes sem rotação e com rotação obliqua:
 
-```{r}
+```{r echo=FALSE}
 par(mfrow=c(2,1))
-corrplot(t(fit_sem_rotacao$loadings))
-corrplot(t(fit_oblimin$loadings))
+corrplot(t(fit_sem_rotacao$loadings), title = 'Sem Rotação', tl.col="black",tl.cex=0.75 )
+corrplot(t(fit_oblimin$loadings) , title = 'Rotação Oblíqua', tl.col="black",tl.cex=0.75)
 par(mfrow=c(1,1))
 ```
-```{r}
+
+Verificando a correlação entre os fatores nos componentes com rotação Oblíqua
+
+```{r echo=FALSE}
 cor(fit_oblimin$loadings)
 ```
 
 Não tem correlação forte, entao  fazer varimax
-
 
 
 ```{r}
@@ -108,18 +115,17 @@ fit_varimax     <- principal(dados.scale, covar = FALSE, nfactors = 4, rotate='v
 fit_varimax$loadings
 ```
 
+Comparando as cargas das Rotaçõesw Oblíqua e Varimax
 
-```{r}
+```{r echo=FALSE}
 
 par(mfrow=c(2,1))
-corrplot(t(fit_oblimin$loadings))
-corrplot(t(fit_varimax$loadings))
+corrplot(t(fit_oblimin$loadings),title = 'Rotação Oblíqua', tl.col="black",tl.cex=0.75)
+corrplot(t(fit_varimax$loadings),title = 'Rotação Varimax', tl.col="black",tl.cex=0.75)
 par(mfrow=c(1,1))
 ```
 
-
-
-Relações:
+Relações: (conferir)
 
 RC1:
 <br>**X1** - Estupro 
@@ -149,39 +155,58 @@ RC5:
 
 
 
-# Gravando o arquivo para o próximo passo
+Comunalidades
+comunalidade é a variabilidade explicada de cada variavel
+(igual nas tres(?))
 
 ```{r}
+data.frame(
+    'Sem Rotação' = fit_sem_rotacao$communality,    
+    Oblimin = fit_oblimin$communality,
+    Varimax = fit_varimax$communality
+)
+
+```
+
+Biplot dos modelos:
+
+```{r}
+library(ggfortify)
+
+#autoplot(prcomp(dados.scale))
+autoplot(prcomp(dados.scale), data = dados,
+         loadings = TRUE, loadings.colour = 'blue',
+         loadings.label = TRUE, loadings.label.size = 3)
+```
+
+
+
+Gravando o arquivo para o próximo passo
+
+```{r echo=FALSE}
 
 base_acp_scores_oblimin <- 
   cbind( dados[,1:2], 
          fit_oblimin$scores)
 
-head(base_acp_scores_oblimin)
+#head(base_acp_scores_oblimin)
 
 write.csv2(base_acp_scores_oblimin, 'base_acp_scores_oblimin.csv',row.names=FALSE)
 
 ```
 
 
-```{r}
+```{r echo=FALSE}
 
 base_acp_scores_varimax <- 
   cbind( dados[,1:2], 
          fit_varimax$scores)
 
-head(base_acp_scores_varimax)
+#head(base_acp_scores_varimax)
 
 write.csv2(base_acp_scores_varimax, 'base_acp_scores_varimax.csv',row.names=FALSE)
 
 
-
-```
-
-
-biplot dos modelos:
-
-```{r}
 
 ```
 

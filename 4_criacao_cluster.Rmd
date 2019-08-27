@@ -6,7 +6,6 @@ output: html_document
 ---
 
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -67,7 +66,7 @@ corrplot(cor, tl.col = "black")
 
 
 
-Criar histograma das distribuições.
+Distribuição das correlações 
 
 ```{r}
 
@@ -156,8 +155,16 @@ plot(ward , main = 'Ward')
 
 grupos.ward <- cutree(ward, k=5)
 table.ward <- table(grupos.ward) %>% data.frame
-table.ward
-plot_ly(x=1:5, y=table.ward$Freq, type="bar" )
+#table.ward
+
+p<- barplot(table.ward$Freq, 
+            names.arg = paste('Grupo',table.ward$grupos.ward),
+            xlab = 'Quantidade de Elementos por Grupo')
+text(x=p, y=table.ward$Freq + 2*sign(table.ward$Freq), labels=table.ward$Freq, xpd=TRUE)
+#p
+
+#fancy
+#plot_ly(x=1:5, y=table.ward$Freq, type="bar" )
 
 ```
 
