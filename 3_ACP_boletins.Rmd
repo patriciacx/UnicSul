@@ -12,6 +12,13 @@ library(corrplot)
 library(psych)
 library(knitr)
 
+
+library(foreign)
+library(psych)
+library(dplyr)
+library(mvnormtest)
+library(GPArotation)
+
 ```
 
 Lendo Arquivo:
@@ -172,5 +179,10 @@ write.csv2(base_acp_scores_varimax, 'base_acp_scores_varimax.csv',row.names=FALS
 ```
 
 
+biplot dos modelos:
+
+```{r}
+
+```
 
 

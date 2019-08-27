@@ -21,64 +21,74 @@ Lendo Arquivo:
 ```{r  echo=FALSE}
 dados <- read.csv2('base_boletins_tcc.csv', sep=';')
 
-glimpse(dados)
+#glimpse(dados)
 
 ```
 
 
-```{r message=FALSE, warning=FALSE, include=FALSE}
-dados.pivot <- gather(dados[,-(1:2)], "var", "Valor")
-glimpse(dados.pivot)
-```
-
+Variáveis
 ```{r}
 variaveis <- read.csv2('variaveis.csv') %>% as.data.frame
 print(variaveis)
 ```
 
-```{r}
+```{r echo=FALSE}
 #summary(dados[,-(1:2)])
-resumo <- data.frame(
-    'Mínimo' = tapply(dados.pivot$Valor, dados.pivot$var, min),
-    'Máximo' = tapply(dados.pivot$Valor, dados.pivot$var, max),
-    'Média' = tapply(dados.pivot$Valor, dados.pivot$var, mean),
-    'Mediana' = tapply(dados.pivot$Valor, dados.pivot$var, median),
-    'Desvio Padrão' = tapply(dados.pivot$Valor, dados.pivot$var, sd)
-)
+
+dados_long <- gather(dados[,-(1:2)], 'var', 'val')
+dados_long$var <- dados_long$var %>% as.factor
+
+resumo <- 
+  data.frame(
+    minimo = tapply(dados_long$val, dados_long$var, min) ,
+    maximo = tapply(dados_long$val, dados_long$var, max) ,
+    media  = tapply(dados_long$val, dados_long$var, mean),
+    mediana  = tapply(dados_long$val, dados_long$var, median), 
+    desvio = tapply(dados_long$val, dados_long$var, sd) 
+) 
 
 resumo
+
+
 ```
 
 
+Distribuição das variáveis originais
 
 ```{r echo=FALSE}
 par(mfrow=c(2,4))
 
-hist(dados.pivot[dados.pivot$var=='X01',2], main = 'X1', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X02',2], main = 'X2', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X03',2], main = 'X3', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X04',2], main = 'X4', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X05',2], main = 'X5', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X06',2], main = 'X6', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X07',2], main = 'X7', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X08',2], main = 'X8', ylab='Frequência', xlab='')
-
-
-hist(dados.pivot[dados.pivot$var=='X09',2], main = 'X9', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X10',2], main = 'X10', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X11',2], main = 'X11', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X12',2], main = 'X12', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X13',2], main = 'X13', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X14',2], main = 'X14', ylab='Frequência', xlab='')
-hist(dados.pivot[dados.pivot$var=='X15',2], main = 'X15', ylab='Frequência', xlab='')
-#hist(dados.pivot[dados.pivot$var=='X16',2], main = 'X16', ylab='Frequência', xlab='')
-#hist(dados.pivot[dados.pivot$var=='X17',2], main = 'X17', ylab='Frequência', xlab='')
+hist(dados_long[dados_long$var=='X01',2], main = 'X1', ylab='Frequência', xlab='')
+hist(dados_long[dados_long$var=='X02',2], main = 'X2', ylab='Frequência', xlab='')
+hist(dados_long[dados_long$var=='X03',2], main = 'X3', ylab='Frequência', xlab='')
+hist(dados_long[dados_long$var=='X04',2], main = 'X4', ylab='Frequência', xlab='')
+hist(dados_long[dados_long$var=='X05',2], main = 'X5', ylab='Frequência', xlab='')
+hist(dados_long[dados_long$var=='X06',2], main = 'X6', ylab='Frequência', xlab='')
+hist(dados_long[dados_long$var=='X07',2], main = 'X7', ylab='Frequência', xlab='')
+hist(dados_long[dados_long$var=='X08',2], main = 'X8', ylab='Frequência', xlab='')
+hist(dados_long[dados_long$var=='X09',2], main = 'X9', ylab='Frequência', xlab='')
+hist(dados_long[dados_long$var=='X10',2], main = 'X10', ylab='Frequência', xlab='')
+hist(dados_long[dados_long$var=='X11',2], main = 'X11', ylab='Frequência', xlab='')
+hist(dados_long[dados_long$var=='X12',2], main = 'X12', ylab='Frequência', xlab='')
+hist(dados_long[dados_long$var=='X13',2], main = 'X13', ylab='Frequência', xlab='')
+hist(dados_long[dados_long$var=='X14',2], main = 'X14', ylab='Frequência', xlab='')
+hist(dados_long[dados_long$var=='X15',2], main = 'X15', ylab='Frequência', xlab='')
 
 
 ```
-```{r}
+```{r include=FALSE}
 par(mfrow=c(1,1))
 
+```
+
+
+Box Plot comparativo das variáveis 
+
+```{r}
+par(las = 1)
+boxplot(dados_long$val ~ dados_long$var,
+        horizontal = T,
+        lex.order = TRUE)
 ```
 
 

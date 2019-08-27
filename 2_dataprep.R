@@ -77,10 +77,10 @@ dados.join$`ROUBO A BANCO` <-NULL
 
 #RENOMEANDO AS VARIAVEIS
 
-variaveis <- cbind(paste('X',
+variaveis <- data.frame(Nome = paste('X',
                         str_pad(string = as.character(1:15),width = 2,pad = '0'), 
                         sep =''),
-             colnames(dados.join)[3:17])
+                        'Descrição' = colnames(dados.join)[3:17])
 variaveis
 
 colnames(dados.join)[3:17] <- paste('X',
@@ -99,7 +99,7 @@ dados.join <- dados.join[substr(dados.join$delegacia,5,6) == 'DP',]
 
 
 write.csv2(dados.join, 'base_boletins_tcc.csv',row.names=FALSE)
-write.csv2(variaveis, 'variaveis.csv',row.names=FALSE)
+write.csv2(variaveis, 'variaveis.csv',row.names=TRUE)
 
 
 ### 
