@@ -20,71 +20,74 @@ dados.join <- left_join(x= dados,
 
 dados.join <- dados.join[,c(1,25,2:24)]
 
-glimpse(dados.join)
+names(dados.join)
 
 # SUBTRAINDO HOMICIDIOS
 
 
 dados.join[,'HOMICÍDIO DOLOSO (2)']
 dados.join[,'HOMICÍDIO DOLOSO POR ACIDENTE DE TRÂNSITO']
-dados.join$HomicidioDolosoExcetoTransito <- dados.join[,'HOMICÍDIO DOLOSO (2)'] - 
+dados.join[,'HOMICÍDIO DOLOSO (2)'] <- dados.join[,'HOMICÍDIO DOLOSO (2)'] - 
   dados.join[,'HOMICÍDIO DOLOSO POR ACIDENTE DE TRÂNSITO']
 
 
-dados.join[,'HOMICÍDIO DOLOSO (2)'] <- NULL
+names(dados.join)[names(dados.join)=='HOMICÍDIO DOLOSO (2)'] <- 'HOMICÍDIO DOLOSO OUTROS'
+
+#dados.join[,'HOMICÍDIO DOLOSO (2)'] <- NULL
 
 ## RETIRANDO VARIAVEIS DE TOTAIS
-glimpse(dados.join)
+names(dados.join)
 
 dim(dados.join)
 
-head(dados.join[,23:24])
-dados.join[,23:24] <- NULL
+names(dados.join[,24:25])
+dados.join[,24:25] <- NULL
 
 ## RETIRANDO AS VARIÁVEIS DE NUMERO DE VÍTIMAS
 dim(dados.join)
-glimpse(dados.join)
+names(dados.join)
 
-head(dados.join[,15:17])
-dados.join[,15:17] <- NULL
+names((dados.join[,16:18]))
+dados.join[,16:18] <- NULL
 
 dim(dados.join)
-glimpse(dados.join)
+names(dados.join)
 
 
 ## JUNTANDO HOMICIDIO DOLOCO E CULPOSO POR AC DE TRANSITO
 
-dados.join$homicidio_por_ac_transito <- 
-  dados.join$`HOMICÍDIO CULPOSO POR ACIDENTE DE TRÂNSITO` +
-  dados.join$`HOMICÍDIO DOLOSO POR ACIDENTE DE TRÂNSITO`
+#dados.join$homicidio_por_ac_transito <- 
+#  dados.join$`HOMICÍDIO CULPOSO POR ACIDENTE DE TRÂNSITO` +
+#  dados.join$`HOMICÍDIO DOLOSO POR ACIDENTE DE TRÂNSITO`
 
-dados.join$`HOMICÍDIO CULPOSO POR ACIDENTE DE TRÂNSITO` <- NULL
-dados.join$`HOMICÍDIO DOLOSO POR ACIDENTE DE TRÂNSITO` <- NULL
+#dados.join$`HOMICÍDIO CULPOSO POR ACIDENTE DE TRÂNSITO` <- NULL
+#dados.join$`HOMICÍDIO DOLOSO POR ACIDENTE DE TRÂNSITO` <- NULL
 
 ## juntar lesao corporal seguida de morte e homicidio doloso
 
 
-dados.join$HomicidioDoloso <- 
-  dados.join$HomicidioDolosoExcetoTransito +
-  dados.join$`LESÃO CORPORAL SEGUIDA DE MORTE`
+#dados.join$HomicidioDoloso <- 
+#  dados.join$HomicidioDolosoExcetoTransito +
+#  dados.join$`LESÃO CORPORAL SEGUIDA DE MORTE`
 
-dados.join$HomicidioDolosoExcetoTransito <- NULL
-dados.join$`LESÃO CORPORAL SEGUIDA DE MORTE` <- NULL
+#dados.join$HomicidioDolosoExcetoTransito <- NULL
+#dados.join$`LESÃO CORPORAL SEGUIDA DE MORTE` <- NULL
 
 #tirando roubo a banco
 
 dados.join$`ROUBO A BANCO` <-NULL
 
 #RENOMEANDO AS VARIAVEIS
+names(dados.join)
 
 variaveis <- data.frame(Nome = paste('X',
-                        str_pad(string = as.character(1:15),width = 2,pad = '0'), 
+                        str_pad(string = as.character(1:17),width = 2,pad = '0'), 
                         sep =''),
-                        'Descrição' = colnames(dados.join)[3:17])
+                        'Descrição' = colnames(dados.join)[3:19])
 variaveis
 
-colnames(dados.join)[3:17] <- paste('X',
-                                    str_pad(string = as.character(1:15),width = 2,pad = '0'), 
+colnames(dados.join)[3:19] <- paste('X',
+                                    str_pad(string = as.character(1:17),width = 2,pad = '0'), 
                                      sep ='')
 
 
@@ -99,7 +102,7 @@ dados.join <- dados.join[substr(dados.join$delegacia,5,6) == 'DP',]
 
 
 write.csv2(dados.join, 'base_boletins_tcc.csv',row.names=FALSE)
-write.csv2(variaveis, 'variaveis.csv',row.names=TRUE)
+write.csv2(variaveis, 'variaveis.csv',row.names=FALSE, col.names = FALSE, quote = FALSE)
 
 
 ### 

@@ -45,12 +45,16 @@ Correlações
 
 ```{r echo=FALSE}
 #cor(dados.scale)
+
+par(family = 'sans', font=1 )
+
 corrplot.mixed(
     cor(dados.scale), 
     number.cex=0.7,
-    lower.col = "black", 
-    tl.col="black",
-    tl.cex=0.75)
+    lower.col = "darkgrey", 
+    tl.cex=0.7,
+    tl.col='black'
+)
 
 #corrplot(cor(dados.scale), order = "hclust", hclust.method = "ward.D2", addrect = 4)
 ```
@@ -60,13 +64,16 @@ corrplot.mixed(
 # Ajuste do modelo - escolha do numero de componentes 
 fit1 <- princomp(dados.scale, cor=TRUE) 
 summary(fit1)
+
+
 ```
 
 Gráfico ScreePlot
 
 ```{r}
 # Scree Plot 
-plot(fit1, type="lines")
+plot(fit1, type="lines", 
+    main = 'Gráfico de Cotovelo')
 ```
 
 

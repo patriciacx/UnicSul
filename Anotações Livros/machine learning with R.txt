@@ -1,0 +1,70 @@
+MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
+- Seu destaque na página 389-389 | Adicionado: quinta-feira, 29 de agosto de 2019 11:37:23
+
+unsupervised learning is often much more challenging. The exercise tends to be more subjective
+==========
+MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
+- Seu destaque na página 389-389 | Adicionado: quinta-feira, 29 de agosto de 2019 11:38:24
+
+When faced with a large set of correlated variables, principal components allow us to summarize this set with a smaller number of representative variables that collectively explain most of the variability in the original set.
+==========
+MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
+- Seu destaque na página 390-390 | Adicionado: quinta-feira, 29 de agosto de 2019 12:22:32
+
+Principal component analysis (PCA) refers to the process by which prinprincipal cipal components are computed, and the subsequent use of these components component in understanding the data. PCA is an unsupervised approach, since analysis it involves only a set of features X1, X2, ... , Xp, and no associated response Y . Apart from producing derived variables for use in supervised learning problems, PCA also serves as a tool for data visualization (visualization of the observations or visualization of the variables)
+==========
+MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
+- Seu destaque na página 390-390 | Adicionado: quinta-feira, 29 de agosto de 2019 13:26:49
+
+PCA provides a tool to do just this. It fnds a low-dimensional representation of a data set that contains as much as possible of the variation. The idea is that each of the n observations lives in p-dimensional space, but not all of these dimensions are equally interesting. PCA seeks a small number of dimensions that are as interesting as possible, where the concept of interesting is measured by the amount that the observations vary along each dimension. Each of the dimensions found by PCA is a linear combination of the p features. We now explain the manner in which these dimensions, or principal components, are found.
+==========
+MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
+- Seu destaque na página 395-395 | Adicionado: quinta-feira, 29 de agosto de 2019 13:30:09
+
+before PCA is performed, the variables should be centered to have mean zero.Furthermore
+==========
+MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
+- Seu destaque na página 395-395 | Adicionado: quinta-feira, 29 de agosto de 2019 13:30:14
+
+before PCA is performed, the variables should be centered to have mean zero
+==========
+MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
+- Seu destaque na página 397-397 | Adicionado: quinta-feira, 29 de agosto de 2019 14:31:27
+
+We can now ask a natural question: how much of the information in a given data set is lost by projecting the observations onto the frst few principal components? That is, how much of the variance in the data is not contained in the frst few principal components? More
+==========
+MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
+- Seu destaque na página 397-397 | Adicionado: quinta-feira, 29 de agosto de 2019 14:31:58
+
+That is, how much of the variance in the data is not contained in the frst few principal components? More generally, we are interested in knowing the proportion of variance explained (PVE) by each principal component.
+==========
+MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
+- Seu destaque na página 399-399 | Adicionado: quinta-feira, 29 de agosto de 2019 14:33:46
+
+We typically decide on the number of principal components required to visualize the data by examining a scree plot, such as the one shown in the left-hand panel of Figure 10.4. We choose the smallest number of principal components that are required in order to explain a sizable amount of the variation in the data. This is done by eyeballing the scree plot, and looking for a point at which the proportion of variance explained by each subsequent principal component drops of. This is often referred to as an elbow in the scree plot
+==========
+MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
+- Seu destaque na página 399-399 | Adicionado: quinta-feira, 29 de agosto de 2019 14:35:00
+
+However, this type of visual analysis is inherently ad hoc. Unfortunately, there is no well-accepted objective way to decide how many principal components are enough. In fact, the question of how many principal components are enough is inherently ill-defned, and will depend on the specifc area of application and the specifc data set. In practice, we tend to look at the frst few principal components in order to fnd interesting patterns in the data. If no interesting patterns are found in the frst few principal components, then further principal components are unlikely to be of interest. Conversely, if the frst few principal components are interesting, then we typically continue to look at subsequent principal components until no further interesting patterns are found. This is admittedly a subjective approach, and is refective of the
+==========
+MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
+- Seu destaque na página 399-399 | Adicionado: quinta-feira, 29 de agosto de 2019 14:35:06
+
+However, this type of visual analysis is inherently ad hoc. Unfortunately, there is no well-accepted objective way to decide how many principal components are enough. In fact, the question of how many principal components are enough is inherently ill-defned, and will depend on the specifc area of application and the specifc data set. In practice, we tend to look at the frst few principal components in order to fnd interesting patterns in the data. If no interesting patterns are found in the frst few principal components, then further principal components are unlikely to be of interest. Conversely, if the frst few principal components are interesting, then we typically continue to look at subsequent principal components until no further interesting patterns are found. This is admittedly a subjective approach, and is refective of the fact that PCA is generally used as a tool for exploratory data analysis.
+==========
+MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
+- Seu destaque na página 400-400 | Adicionado: quinta-feira, 29 de agosto de 2019 14:42:33
+
+Clustering refers to a very broad set of techniques for fnding subgroups, or clustering clusters, in a data set. When we cluster the observations of a data set, we seek to partition them into distinct groups so that the observations within each group are quite similar to each other, while observations in diferent groups are quite diferent from each other. Of course, to make this concrete, we must defne what it means for two or more observations to be similar or diferent. Indeed, this is often a domain-specifc consideration that must be made based on knowledge of the data being studied.
+==========
+MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
+- Seu destaque na página 401-401 | Adicionado: quinta-feira, 29 de agosto de 2019 14:44:00
+
+in hierarchical clustering, we do not know in advance how many clusters we want; in fact, we end up with a tree-like visual representation of the observations, called a dendrogram, that allows us to view at once the clusterings obtained for each possible number of clusters, from 1 to n.
+==========
+MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
+- Seu destaque na página 405-405 | Adicionado: quinta-feira, 29 de agosto de 2019 14:44:50
+
+Hierarchical clustering has an added advantage over K-means clustering in that it results in an attractive tree-based representation of the observations, called a dendrogram.
+==========

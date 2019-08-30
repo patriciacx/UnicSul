@@ -1689,7 +1689,7 @@
                         <format attr='margin' value='4' />
                       </zone-style>
                     </zone>
-                    <zone h='39526' id='10' name='Cluster VS RC' w='56277' x='43030' y='1351'>
+                    <zone h='39525' id='10' name='Cluster VS RC' w='56277' x='43030' y='1351'>
                       <zone-style>
                         <format attr='border-color' value='#000000' />
                         <format attr='border-style' value='none' />
@@ -1697,8 +1697,8 @@
                         <format attr='margin' value='4' />
                       </zone-style>
                     </zone>
-                    <zone fixed-size='160' h='57772' id='6' is-fixed='true' param='horz' type='layout-flow' w='56277' x='43030' y='40877'>
-                      <zone fixed-size='293' h='57772' id='11' is-fixed='true' name='menu' show-title='false' w='26061' x='43030' y='40877'>
+                    <zone fixed-size='160' h='57773' id='6' is-fixed='true' param='horz' type='layout-flow' w='56277' x='43030' y='40876'>
+                      <zone fixed-size='293' h='57773' id='11' is-fixed='true' name='menu' show-title='false' w='26061' x='43030' y='40876'>
                         <layout-cache cell-count-h='1' non-cell-size-h='72' type-h='cell' type-w='fixed' />
                         <zone-style>
                           <format attr='border-color' value='#000000' />
@@ -1707,8 +1707,8 @@
                           <format attr='margin' value='4' />
                         </zone-style>
                       </zone>
-                      <zone h='57772' id='29' param='vert' type='layout-flow' w='30213' x='69091' y='40877'>
-                        <zone fixed-size='158' h='28040' id='22' is-fixed='true' name='Confusão Regiões' show-title='false' w='30213' x='69091' y='40877'>
+                      <zone h='57773' id='29' param='vert' type='layout-flow' w='30213' x='69091' y='40876'>
+                        <zone fixed-size='158' h='28040' id='22' is-fixed='true' name='Confusão Regiões' show-title='false' w='30213' x='69091' y='40876'>
                           <layout-cache type-h='fixed' type-w='cell' />
                           <zone-style>
                             <format attr='border-color' value='#000000' />
@@ -1717,7 +1717,7 @@
                             <format attr='margin' value='4' />
                           </zone-style>
                         </zone>
-                        <zone fixed-size='157' h='27871' id='25' is-fixed='true' name='Confusão Distancia' show-title='false' w='30213' x='69091' y='68917'>
+                        <zone fixed-size='157' h='27871' id='25' is-fixed='true' name='Confusão Distancia' show-title='false' w='30213' x='69091' y='68916'>
                           <layout-cache type-h='cell' type-w='cell' />
                           <zone-style>
                             <format attr='border-color' value='#000000' />
@@ -1826,7 +1826,7 @@
         </viewpoint>
         <viewpoint name='menu' />
       </viewpoints>
-      <active id='-1' />
+      <active id='3' />
       <simple-id uuid='{F7ED4CD7-9CFF-4547-A383-B8B25CD9502F}' />
     </window>
     <window class='worksheet' name='Confusão Regiões'>

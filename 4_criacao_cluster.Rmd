@@ -73,7 +73,8 @@ Distribuição das correlações
 summary(abs(as.vector(cor)))
 
 hist(as.vector(cor))
-hist(abs(as.vector(cor)))
+hist(abs(as.vector(cor)), 
+     main= 'Distribuição das Correlações entre as ')
 
 ```
 
@@ -116,7 +117,9 @@ ggplot(elbow_data %>% filter(k<=20),
                        group=Metodo, 
                        color=Metodo, 
                        alpha = 0.8)) +
-  geom_line(size=1.5 ,linetype = 1) + theme_bw()
+  geom_line(size=1.5 ,linetype = 1) + 
+  theme_bw() +
+  ggtitle('Gráfico de Cotovelo \nComparativo entre os Algoritmos de Agrupamento')
 
 ```
 
@@ -145,7 +148,10 @@ plot(wpgma, main = 'WPGMA')
 plot(upgmc, main = 'UPGMC')
 par(mfrow=c(1,1))
 
-plot(ward , main = 'Ward')
+plot(ward , 
+     main = 'Ward',
+     hang = -1, 
+     cex = 0.01)
 ```
 &nbsp;
 

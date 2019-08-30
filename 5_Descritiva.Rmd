@@ -47,6 +47,9 @@ resumo <-
     desvio = tapply(dados_long$val, dados_long$var, sd) 
 ) 
 
+
+write.csv2(resumo, 'resumo.csv',row.names=TRUE, col.names = TRUE, quote = FALSE)
+
 resumo
 
 
@@ -58,21 +61,24 @@ Distribuição das variáveis originais
 ```{r echo=FALSE}
 par(mfrow=c(2,4))
 
-hist(dados_long[dados_long$var=='X01',2], main = 'X1', ylab='Frequência', xlab='')
-hist(dados_long[dados_long$var=='X02',2], main = 'X2', ylab='Frequência', xlab='')
-hist(dados_long[dados_long$var=='X03',2], main = 'X3', ylab='Frequência', xlab='')
-hist(dados_long[dados_long$var=='X04',2], main = 'X4', ylab='Frequência', xlab='')
-hist(dados_long[dados_long$var=='X05',2], main = 'X5', ylab='Frequência', xlab='')
-hist(dados_long[dados_long$var=='X06',2], main = 'X6', ylab='Frequência', xlab='')
-hist(dados_long[dados_long$var=='X07',2], main = 'X7', ylab='Frequência', xlab='')
-hist(dados_long[dados_long$var=='X08',2], main = 'X8', ylab='Frequência', xlab='')
-hist(dados_long[dados_long$var=='X09',2], main = 'X9', ylab='Frequência', xlab='')
-hist(dados_long[dados_long$var=='X10',2], main = 'X10', ylab='Frequência', xlab='')
-hist(dados_long[dados_long$var=='X11',2], main = 'X11', ylab='Frequência', xlab='')
-hist(dados_long[dados_long$var=='X12',2], main = 'X12', ylab='Frequência', xlab='')
-hist(dados_long[dados_long$var=='X13',2], main = 'X13', ylab='Frequência', xlab='')
-hist(dados_long[dados_long$var=='X14',2], main = 'X14', ylab='Frequência', xlab='')
-hist(dados_long[dados_long$var=='X15',2], main = 'X15', ylab='Frequência', xlab='')
+
+hist(dados_long[dados_long$var=='X01',2], col = 'lightgrey', main = 'X1', ylab='Frequência', xlab='')
+hist(dados_long[dados_long$var=='X02',2], col = 'lightgrey', main = 'X2', ylab='', xlab='')
+hist(dados_long[dados_long$var=='X03',2], col = 'lightgrey', main = 'X3', ylab='', xlab='')
+hist(dados_long[dados_long$var=='X04',2], col = 'lightgrey', main = 'X4', ylab='', xlab='')
+hist(dados_long[dados_long$var=='X05',2], col = 'lightgrey', main = 'X5', ylab='Frequência', xlab='')
+hist(dados_long[dados_long$var=='X06',2], col = 'lightgrey', main = 'X6', ylab='', xlab='')
+hist(dados_long[dados_long$var=='X07',2], col = 'lightgrey', main = 'X7', ylab='', xlab='')
+hist(dados_long[dados_long$var=='X08',2], col = 'lightgrey', main = 'X8', ylab='', xlab='')
+hist(dados_long[dados_long$var=='X09',2], col = 'lightgrey', main = 'X9', ylab='Frequência', xlab='')
+hist(dados_long[dados_long$var=='X10',2], col = 'lightgrey', main = 'X10', ylab='', xlab='')
+hist(dados_long[dados_long$var=='X11',2], col = 'lightgrey', main = 'X11', ylab='', xlab='')
+hist(dados_long[dados_long$var=='X12',2], col = 'lightgrey', main = 'X12', ylab='', xlab='')
+hist(dados_long[dados_long$var=='X13',2], col = 'lightgrey', main = 'X13', ylab='Frequência', xlab='')
+hist(dados_long[dados_long$var=='X14',2], col = 'lightgrey', main = 'X14', ylab='', xlab='')
+hist(dados_long[dados_long$var=='X15',2], col = 'lightgrey', main = 'X15', ylab='', xlab='')
+hist(dados_long[dados_long$var=='X16',2], col = 'lightgrey', main = 'X16', ylab='', xlab='')
+hist(dados_long[dados_long$var=='X17',2], col = 'lightgrey', main = 'X17', ylab='Frequência', xlab='')
 
 
 ```
