@@ -73,21 +73,24 @@ names(dados.join)
 #dados.join$HomicidioDolosoExcetoTransito <- NULL
 #dados.join$`LESÃO CORPORAL SEGUIDA DE MORTE` <- NULL
 
-#tirando roubo a banco
+#tirando roubo a banco e roubo de carga
 
 dados.join$`ROUBO A BANCO` <-NULL
+
+dados.join$`ROUBO DE CARGA` <- NULL
+
 
 #RENOMEANDO AS VARIAVEIS
 names(dados.join)
 
 variaveis <- data.frame(Nome = paste('X',
-                        str_pad(string = as.character(1:17),width = 2,pad = '0'), 
+                        str_pad(string = as.character(1:16),width = 2,pad = '0'), 
                         sep =''),
-                        'Descrição' = colnames(dados.join)[3:19])
+                        'Descrição' = colnames(dados.join)[3:18])
 variaveis
 
-colnames(dados.join)[3:19] <- paste('X',
-                                    str_pad(string = as.character(1:17),width = 2,pad = '0'), 
+colnames(dados.join)[3:18] <- paste('X',
+                                    str_pad(string = as.character(1:16),width = 2,pad = '0'), 
                                      sep ='')
 
 

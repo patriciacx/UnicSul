@@ -1,3 +1,8 @@
+﻿MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
+- Seu destaque na página 389-389 | Adicionado: quinta-feira, 29 de agosto de 2019 11:37:11
+
+unsupervised learning is often much more challenging. The exercise tends to be
+==========
 MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
 - Seu destaque na página 389-389 | Adicionado: quinta-feira, 29 de agosto de 2019 11:37:23
 
@@ -67,4 +72,24 @@ MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert T
 - Seu destaque na página 405-405 | Adicionado: quinta-feira, 29 de agosto de 2019 14:44:50
 
 Hierarchical clustering has an added advantage over K-means clustering in that it results in an attractive tree-based representation of the observations, called a dendrogram.
+==========
+MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
+- Seu destaque na página 413-413 | Adicionado: sexta-feira, 30 de agosto de 2019 20:56:11
+
+obtained, than rare purchases like computers. This may not be desirable. If the variables are scaled to have standard deviation one before the inter-observation dissimilarities are computed, then each variable will in efect
+==========
+MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
+- Seu destaque na página 413-413 | Adicionado: sexta-feira, 30 de agosto de 2019 20:56:18
+
+If the variables are scaled to have standard deviation one before the inter
+==========
+MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
+- Seu destaque na página 413-413 | Adicionado: sexta-feira, 30 de agosto de 2019 20:56:49
+
+If the variables are scaled to have standard deviation one before the inter-observation dissimilarities are computed, then each variable will in
+==========
+MACHINE LEARNING WITH R - Gareth James, Daniela Witten, Trevor Hastie e Robert Tibshirani  
+- Seu destaque na página 413-413 | Adicionado: sexta-feira, 30 de agosto de 2019 20:57:02
+
+If the variables are scaled to have standard deviation one before the inter-observation dissimilarities are computed, then each variable will in efect be given equal importance in the hierarchical clustering performed.
 ==========
