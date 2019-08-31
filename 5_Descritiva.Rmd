@@ -78,7 +78,6 @@ hist(dados_long[dados_long$var=='X13',2], col = 'lightgrey', main = 'X13', ylab=
 hist(dados_long[dados_long$var=='X14',2], col = 'lightgrey', main = 'X14', ylab='', xlab='')
 hist(dados_long[dados_long$var=='X15',2], col = 'lightgrey', main = 'X15', ylab='', xlab='')
 hist(dados_long[dados_long$var=='X16',2], col = 'lightgrey', main = 'X16', ylab='', xlab='')
-hist(dados_long[dados_long$var=='X17',2], col = 'lightgrey', main = 'X17', ylab='Frequência', xlab='')
 
 
 ```

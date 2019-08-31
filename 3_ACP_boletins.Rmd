@@ -122,6 +122,12 @@ fit_varimax     <- principal(dados.scale, covar = FALSE, nfactors = 4, rotate='v
 fit_varimax$loadings
 ```
 
+```{r}
+fit_varimax
+
+```
+
+
 Comparando as cargas das Rotaçõesw Oblíqua e Varimax
 
 ```{r echo=FALSE}

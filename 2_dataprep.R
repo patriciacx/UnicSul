@@ -7,7 +7,9 @@ library(tidyr)
 getwd()
 
 
+
 arquivo <- read.csv("tcc_dataset.csv", encoding="UTF-8")
+
 delegacias <- read.csv("delegacias.csv", encoding="UTF-8", sep=';')
 dados <- arquivo[,c('delegacia_id', 'Natureza', 'Total')]
 dados <- dados %>% spread(key='Natureza',value = 'Total')
@@ -104,8 +106,8 @@ dados.join <- dados.join[substr(dados.join$delegacia,5,6) == 'DP',]
 
 
 
-write.csv2(dados.join, 'base_boletins_tcc.csv',row.names=FALSE)
-write.csv2(variaveis, 'variaveis.csv',row.names=FALSE, col.names = FALSE, quote = FALSE)
+write.csv2(dados.join, 'base_boletins_tcc.csv',row.names=FALSE, dec=".")
+write.csv2(variaveis, 'variaveis.csv',row.names=FALSE, col.names = FALSE, quote = FALSE, dec="")
 
 
 ### 
