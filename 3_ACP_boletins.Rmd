@@ -81,7 +81,7 @@ Seguindo a Análise com 6 componentes e sem rotação:
 
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 
-fit_sem_rotacao <- principal(dados.scale, covar = FALSE, nfactors = 4) 
+fit_sem_rotacao <- principal(dados.scale, covar = FALSE, nfactors = 5) 
 
 fit_sem_rotacao
 
@@ -92,7 +92,7 @@ Análise de Componentes Principais com rotação Obliqua:
 
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 
-fit_oblimin     <- principal(dados.scale, covar = FALSE, nfactors = 4, rotate='oblimin') 
+fit_oblimin     <- principal(dados.scale, covar = FALSE, nfactors = 5, rotate='oblimin') 
  
 fit_oblimin
 
@@ -117,7 +117,7 @@ Não tem correlação forte, entao  fazer varimax
 
 
 ```{r}
-fit_varimax     <- principal(dados.scale, covar = FALSE, nfactors = 4, rotate='varimax') 
+fit_varimax     <- principal(dados.scale, covar = FALSE, nfactors = 5, rotate='varimax') 
  
 fit_varimax$loadings
 ```
