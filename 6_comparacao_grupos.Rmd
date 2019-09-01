@@ -1,0 +1,108 @@
+---
+title: "6_Anova"
+author: "Patricia"
+date: "1 de setembro de 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+Importando arquivo dos clusters e das distancias do centro
+
+```{r}
+
+clusters <- read.csv2('result_cluster.csv')
+
+delegacias <- read.csv2('LocDPS.csv')
+
+```
+
+
+Juntando as duas tabelas
+
+```{r}
+library(dplyr)
+
+colnames(delegacias)[1] <- 'delegacia_id'
+colnames(delegacias)[2] <- 'Delegacia'
+colnames(delegacias)[9] <- 'Região'
+
+
+dados.dist <- left_join(x= clusters, 
+                        y=delegacias, 
+                        by='delegacia_id') %>%
+               select(delegacia_id, Delegacia, grupos.ward,Distancia, 'Região')
+
+```
+
+
+Distribuição das distâncias
+```{r}
+
+library(ggplot2)
+grupos <- as.factor(dados.dist$grupos.ward)
+Região <- dados.dist$Região
+
+p <- ggplot(dados.dist, 
+              aes(x=Distancia, 
+                  fill = grupos)) +
+  geom_density(alpha = 0.5)
+
+p
+
+```
+
+```{r}
+
+library(ggplot2)
+grupos <- as.factor(dados.dist$grupos.ward)
+Região <- dados.dist$Região
+
+p <- ggplot(dados.dist, 
+              aes(x=Distancia, 
+                  y=grupos,
+                  fill = grupos)) +
+  geom_density(alpha = 0.5)+
+  facet_grid(.~grupos)
+
+p
+
+```
+
+Box Plots
+```{r}
+
+p <- ggplot(dados.dist, aes(x=grupos, y=Distancia, fill=grupos, alpha=0.7)) + 
+  geom_boxplot()+
+  ggtitle('Variação das Distâncias do Centro por Grupo')
+p
+
+```
+
+
+Teste de Kruskal-Wallis
+
+
+The null hypothesis is that the monthly ozone density are identical populations. To test the hypothesis, we apply the kruskal.test function to compare the independent monthly data. The p-value turns out to be nearly zero (6.901e-06). Hence we reject the null hypothesis.
+
+A hipótese nula é de que as distancias do centro são idênticas, então, conforme o p-valor do teste de Kruskal-Wallis é p´roximo de zero, rejeitamos a hipótese nula, aceitando que as médias são diferentes.
+
+```{r}
+kruskal.test(Distancia ~ grupos.ward, data = dados.dist) 
+ 
+
+```
+
+
+```{r}
+pairwise.wilcox.test(x= dados.dist$Distancia, 
+                     g= as.factor(dados.dist$grupos.ward), 
+                     p.adj = "bonf",
+                     paired = FALSE)
+
+```
+
