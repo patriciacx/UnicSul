@@ -133,8 +133,8 @@ Comparando as cargas das Rotaçõesw Oblíqua e Varimax
 ```{r echo=FALSE}
 
 par(mfrow=c(2,1))
-corrplot(t(fit_oblimin$loadings),title = 'Rotação Oblíqua', tl.col="black",tl.cex=0.75)
-corrplot(t(fit_varimax$loadings),title = 'Rotação Varimax', tl.col="black",tl.cex=0.75)
+corrplot(t(fit_oblimin$loadings), tl.col="black",tl.cex=0.75)
+corrplot(t(fit_varimax$loadings), tl.col="black",tl.cex=0.75)
 par(mfrow=c(1,1))
 ```
 

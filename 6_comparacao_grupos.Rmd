@@ -30,12 +30,13 @@ library(dplyr)
 colnames(delegacias)[1] <- 'delegacia_id'
 colnames(delegacias)[2] <- 'Delegacia'
 colnames(delegacias)[9] <- 'Região'
+colnames(delegacias)[4] <- 'Distância'
 
 
 dados.dist <- left_join(x= clusters, 
                         y=delegacias, 
                         by='delegacia_id') %>%
-               select(delegacia_id, Delegacia, grupos.ward,Distancia, 'Região')
+               select(delegacia_id, Delegacia, grupos.ward,Distância, 'Região')
 
 ```
 
@@ -44,44 +45,19 @@ Distribuição das distâncias
 ```{r}
 
 library(ggplot2)
-grupos <- as.factor(dados.dist$grupos.ward)
+Grupos <- as.factor(dados.dist$grupos.ward)
 Região <- dados.dist$Região
 
 p <- ggplot(dados.dist, 
-              aes(x=Distancia, 
-                  fill = grupos)) +
+              aes(x=Distância, 
+                  fill = Grupos)) +
   geom_density(alpha = 0.5)
 
 p
 
 ```
 
-```{r}
 
-library(ggplot2)
-grupos <- as.factor(dados.dist$grupos.ward)
-Região <- dados.dist$Região
-
-p <- ggplot(dados.dist, 
-              aes(x=Distancia, 
-                  y=grupos,
-                  fill = grupos)) +
-  geom_density(alpha = 0.5)+
-  facet_grid(.~grupos)
-
-p
-
-```
-
-Box Plots
-```{r}
-
-p <- ggplot(dados.dist, aes(x=grupos, y=Distancia, fill=grupos, alpha=0.7)) + 
-  geom_boxplot()+
-  ggtitle('Variação das Distâncias do Centro por Grupo')
-p
-
-```
 
 
 Teste de Kruskal-Wallis
@@ -92,17 +68,106 @@ The null hypothesis is that the monthly ozone density are identical populations.
 A hipótese nula é de que as distancias do centro são idênticas, então, conforme o p-valor do teste de Kruskal-Wallis é p´roximo de zero, rejeitamos a hipótese nula, aceitando que as médias são diferentes.
 
 ```{r}
-kruskal.test(Distancia ~ grupos.ward, data = dados.dist) 
+kruskal.test(Distância ~ grupos.ward, data = dados.dist) 
  
 
 ```
 
 
 ```{r}
-pairwise.wilcox.test(x= dados.dist$Distancia, 
-                     g= as.factor(dados.dist$grupos.ward), 
+pairwise.wilcox.test(x= dados.dist$Distância, 
+                     g= Grupos, 
                      p.adj = "bonf",
                      paired = FALSE)
 
+```
+
+
+
+
+Box Plots
+```{r}
+
+p <- ggplot(dados.dist, aes(x=Grupos, y=Distância, fill=Grupos, alpha=0.7)) + 
+  geom_boxplot()+
+  ggtitle('Variação das Distâncias do Centro por Grupo')
+p
+
+```
+
+
+Outra forma de calcular as diferencas entre as medias
+
+```{r}
+
+library(ggpubr)
+#theme_set(theme_pubclean())
+
+
+
+compare_means( Distância ~  grupos.ward, 
+               data = dados.dist,
+               method = "kruskal.test")
+
+```
+
+
+
+```{r}
+
+mycomp <- list(c('1','2'), 
+               c('1','3'),
+               c('1','4'),
+               c('1','5'),
+               c('2','3'),
+               c('2','4'),
+               c('2','5'),
+               c('3','4'),
+               c('3','5'),
+               c('4','5')
+               )
+
+ggboxplot(dados.dist, 
+          x = 'grupos.ward',
+          y = 'Distância',
+          fill = "grupos.ward",
+          alpha =0.8) + 
+  stat_compare_means(comparisons = mycomp) + 
+  stat_compare_means(label.y = 70)            
+
+
+
+```
+
+Grupo 1 (a, b);
+Grupo 2 (a, c);
+Grupo 3 (a, b);
+Grupo 4 (c);
+Grupo 5 (b).
+
+```{r}
+
+rotulos <- dados.dist$grupos.ward
+rotulos[rotulos==1] <- 'a , b'
+rotulos[rotulos==2] <- 'a , c'
+rotulos[rotulos==3] <- 'a , b'
+rotulos[rotulos==4] <- 'c'
+rotulos[rotulos==5] <- 'b'
+
+
+ggplot(data=dados.dist,
+    aes(x = grupos.ward,
+    y = Distância)
+    ) + 
+    geom_boxplot(aes(fill=Grupos, 
+                     alpha=0.8,
+                     labels='asdf')) + 
+  geom_text(data = dados.dist, 
+            aes(x = grupos.ward, 
+                y = 30, 
+                label = rotulos), 
+            vjust = -0.5) # use hjust to adjust horizontal position 
+  
+    
 ```
 
