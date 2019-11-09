@@ -1,0 +1,168 @@
+---
+title: "R Notebook - clusters direto tcc"
+author: "Patricia Felipe e Leandro"
+date: "11 de junho de 2019"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+if(!require(tidyverse)){install.packages("tidyverse")}
+if(!require(cluster)){install.packages("cluster")}
+if(!require(NbClust)){install.packages("NbClust")}
+if(!require(pvclust)){install.packages('pvclust')}
+if(!require(ggplot2)){install.packages('ggplot2')}
+#if(!require(gridExtra)){install.packages('gridExtra')}
+if(!require(plotly)){install.packages('plotly')}
+
+```
+
+
+```{r Funções utilizadas no Gráfico de Cotovelo, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+# within sum of squares
+wss <- function(d) {
+  sum(scale(d, scale = FALSE)^2)
+}
+
+# wrap the data
+wrap <- function(i, hc, x) {
+  cl <- cutree(hc, i)
+  spl <- split(x, cl)
+  wss <- sum(sapply(spl, wss))
+  wss
+}
+
+elbow_plot<- function(data, dissim,met){
+  cl = hclust(dissim, method = met)  
+  res <- sapply(seq.int(1, nrow(data)), 
+                wrap, h =cl, 
+                x = data)
+  return(res)
+}
+```
+
+
+Lendo Arquivo:
+```{r echo=FALSE}
+dados <- read.csv2('base_boletins_tcc.csv', sep=';')
+
+#glimpse(dados)
+```
+
+Escalonamento:
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+dados.scale <- scale(dados[,-c(1:2)]) %>% as.data.frame()
+
+
+dados.num <- dados.scale
+```
+
+### Definindo a quantidade de CLUSTERS
+
+
+```{r}
+dados.num <- dados[,3:18]
+
+
+dis_euclidiana <- dist(dados.num, method="euclidean")
+
+
+elbow_data<-data.frame(ward = elbow_plot(data=dados.num, dissim= dis_euclidiana, 
+                                         met = "ward.D"),
+                       upgma = elbow_plot(data=dados.num,dissim= dis_euclidiana, 
+                                          met = "average"),
+                       wpgmc = elbow_plot(data=dados.num,dissim= dis_euclidiana, 
+                                          met = "median"),
+                       wpgma = elbow_plot(data=dados.num,dissim= dis_euclidiana, 
+                                          met = "mcquitty"),
+                       upgmc = elbow_plot(data=dados.num,dissim= dis_euclidiana, 
+                                          met = "centroid"),
+                       k = seq.int(1, nrow(dados.num))) %>%
+   gather(key="Metodo",value="WSS",-k)
+
+
+elbow_data <- elbow_data %>% filter(k<=30)
+
+
+```
+
+
+
+```{r Plotando Cotovelo, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+ggplot(elbow_data %>% filter(k<=20), 
+                    aes(x=k,y=WSS, 
+                       group=Metodo, 
+                       color=Metodo, 
+                       alpha = 0.8)) +
+  geom_line(size=1.5 ,linetype = 1) + 
+  theme_bw() +
+  ggtitle('Gráfico de Cotovelo \nComparativo entre os Algoritmos de Agrupamento')
+
+```
+
+
+A visualização hierárquica dos métodos pode ser visualizada na figura abaixo
+&nbsp;
+
+
+```{r Calculando clusteres hierárquicos, echo=FALSE}
+
+ward <-hclust(dis_euclidiana, method = 'ward.D2')
+upgma<-hclust(dis_euclidiana, method = 'average')
+wpgmc<-hclust(dis_euclidiana, method = 'median')
+wpgma<-hclust(dis_euclidiana, method = 'mcquitty')
+upgmc<-hclust(dis_euclidiana, method = 'centroid')
+
+```
+
+```{r Hierarquias, echo=FALSE, message=FALSE, warning=FALSE}
+
+par(mfrow=c(2,3))
+plot(ward , main = 'Ward')
+plot(upgma, main = 'UPGMA')
+plot(wpgmc, main = 'WPGMC')
+plot(wpgma, main = 'WPGMA')
+plot(upgmc, main = 'UPGMC')
+par(mfrow=c(1,1))
+
+plot(ward , 
+     main = 'Ward',
+     hang = -1, 
+     cex = 0.01)
+```
+&nbsp;
+
+
+
+```{r Ward, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+grupos.ward <- cutree(ward, k=5)
+table.ward <- table(grupos.ward) %>% data.frame
+#table.ward
+
+p<- barplot(table.ward$Freq, 
+            names.arg = paste('Grupo',table.ward$grupos.ward),
+            xlab = 'Quantidade de Elementos por Grupo')
+text(x=p, y=table.ward$Freq + 2*sign(table.ward$Freq), labels=table.ward$Freq, xpd=TRUE)
+#p
+
+#fancy
+#plot_ly(x=1:5, y=table.ward$Freq, type="bar" )
+
+```
+
+
+```{r}
+
+result <- cbind(
+  dados,
+  grupos.ward)
+
+write.csv2(result, 'result_cluster_direto.csv')
+
+```
+

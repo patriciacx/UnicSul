@@ -177,14 +177,19 @@ ggplot(data=dados.dist,
 ```{r}
 
 library(FSA)
- dunnTest(x= dados.dist$Distância, 
+# dunnTest(x= dados.dist$Distância, g= Grupos)
+ 
+dunn_result <- dunnTest(x= dados.dist$Distância, 
                      g= Grupos)
 
+print(dunn_result,dunn.test.results=FALSE)
+
+print(dunn_result,dunn.test.results=TRUE)
 ```
                      
 ## grupos teste de dunns kruskall wallis multiple comparsions
 
-```{r}
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 
 rotulos <- dados.dist$grupos.ward
 rotulos[rotulos==1] <- 'a , b, c'
